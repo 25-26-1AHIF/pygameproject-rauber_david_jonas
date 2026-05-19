@@ -1,6 +1,6 @@
 import pygame
-from gamevariables.gamevariables import GameVariables as gv
-from gamevariables.gamevariables import GameScreens as GameScreens
+from game_variables.game_variables import GameVariables as gv
+from game_variables.game_variables import GameScreens as GameScreens
 
 
 
