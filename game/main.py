@@ -25,7 +25,7 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if starten_text_rect.collidepoint(event.pos):
                     return GameScreens.PLAY
 
-        pygame.draw(Wolke.png)
+
 
         screen.fill((14, 0, 108))
         screen.blit(titel_text, titel_text_rect)
