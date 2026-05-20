@@ -59,10 +59,10 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 def paused_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Paused Screen")
 
-    titel_text = gv.FONT_BIG.render("PAUSE", True, "white")
-    starten_text = gv.FONT_MIDDLE.render("Weiter Spielen", True, "white")
-    titel_text_rect = titel_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 100))
-    starten_text_rect = starten_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 250))
+    pause_text = gv.FONT_BIG.render("PAUSE", True, "white")
+    weiter_text = gv.FONT_MIDDLE.render("Weiter Spielen", True, "white")
+    pause_text_rect = pause_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 100))
+    weiter_text_rect = weiter_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 250))
 
     while True:
         for event in pygame.event.get():
@@ -74,18 +74,18 @@ def paused_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if event.key == pygame.K_SPACE:
                     return GameScreens.PLAY
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if starten_text_rect.collidepoint(event.pos):
+                if weiter_text_rect.collidepoint(event.pos):
                     return GameScreens.PLAY
 
         screen.fill((14, 0, 108))
-        screen.blit(titel_text, titel_text_rect)
+        screen.blit(pause_text, pause_text_rect)
         pygame.draw.rect(
             surface=screen,
-            rect=starten_text_rect,
+            rect=weiter_text_rect,
             color=(14, 0, 108),
             width=0
         )
-        screen.blit(starten_text, starten_text_rect)
+        screen.blit(weiter_text, weiter_text_rect)
 
         pygame.display.flip()
         clock.tick(gv.FPS)
@@ -103,7 +103,7 @@ def main():
         elif GameScreens.actual == GameScreens.PLAY:
             GameScreens.actual = play_screen(screen, clock)
         elif GameScreens.actual == GameScreens.PAUSED:
-            GameScreens.actual == paused_screen(screen, clock)
+            GameScreens.actual = paused_screen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
     pygame.quit()
