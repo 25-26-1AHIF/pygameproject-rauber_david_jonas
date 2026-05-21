@@ -1,15 +1,13 @@
 import pygame
-from pygame.surface import Surface
-
 from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
-from objects.sprites import Bilder
+
+
+
 
 
 def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Main Screen")
-    Geldsack = Bilder("game/Bilder/Geldsack.png", image_count=1, animation_speed=1, image_rect=pygame.Rect(0, 0, 500, 500))
-    Geldsack.load_spritesheet()
 
     titel_text = gv.FONT_BIG.render("Räuber", True, "white")
     starten_text = gv.FONT_MIDDLE.render("Starten", True, "white")
@@ -29,11 +27,16 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
 
-        screen.fill((14, 100, 255))
+        screen.fill((14, 0, 108))
         screen.blit(titel_text, titel_text_rect)
-
+        pygame.draw.rect(
+            surface=screen,
+            rect=starten_text_rect,
+            color="red",
+            width=0
+        )
         screen.blit(starten_text, starten_text_rect)
-        Geldsack.draw(screen=screen, xpos=30, ypos=30, frame_counter=1)
+
         pygame.display.flip()
         clock.tick(gv.FPS)
 

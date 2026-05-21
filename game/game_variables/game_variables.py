@@ -1,13 +1,11 @@
 import pygame
 
-
-
-
-
 class GameVariables:
     SCREEN_WIDTH = 800
     SCREEN_HIGHT = 600
     FPS = 60
+    player_size = 32
+    player_v = 5
 
     FONT_BIG: pygame.font.Font = None
     FONT_MIDDLE: pygame.font.Font = None
@@ -25,5 +23,7 @@ class GameScreens:
 
     MAIN = ("main")
     PLAY = ("play")
+    PAUSED = ("paused")
     EXIT = ("exit")
     actual = MAIN
+
