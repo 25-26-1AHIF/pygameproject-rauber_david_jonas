@@ -36,12 +36,7 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         Hintergrund.draw(screen, 0, 0, frame_counter)
         screen.blit(titel_text, titel_text_rect)
-        Geldsack.draw(
-            screen,
-            gv.SCREEN_WIDTH / 2 - groesse[0] / 2,
-            gv.SCREEN_HIGHT / 2 - groesse[1] / 2 + 10,
-            frame_counter
-        )
+        Geldsack.draw(screen, gv.SCREEN_WIDTH / 2 - groesse[0] / 2, gv.SCREEN_HIGHT / 2 - groesse[1] / 2 + 10, frame_counter)
         screen.blit(starten_text, starten_text_rect)
 
         frame_counter += 1
