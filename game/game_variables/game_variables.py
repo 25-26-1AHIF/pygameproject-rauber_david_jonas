@@ -23,6 +23,7 @@ class GameScreens:
 
     MAIN = ("main")
     PLAY = ("play")
+    ANIMATION = ("animation")
     PAUSED = ("paused")
     EXIT = ("exit")
     actual = MAIN
