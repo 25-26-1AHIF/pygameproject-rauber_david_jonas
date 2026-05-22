@@ -1,8 +1,8 @@
 import pygame
 
 class GameVariables:
-    SCREEN_WIDTH = 500
-    SCREEN_HIGHT = 500
+    SCREEN_WIDTH = 800
+    SCREEN_HIGHT = 600
     FPS = 60
     player_size = 32
     player_v = 5
@@ -25,6 +25,7 @@ class GameScreens:
     PLAY = ("play")
     ANIMATION = ("animation")
     PAUSED = ("paused")
+    STR = ("str")
     EXIT = ("exit")
     actual = MAIN
 
