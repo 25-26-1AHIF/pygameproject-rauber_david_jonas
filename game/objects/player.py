@@ -9,22 +9,22 @@ class Player:
 
     def move(self) -> None:
         pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[pygame.K_a]:
+        if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
             self.player_x_pos -= gv.player_v
             if self.player_x_pos <= 0:
                 self.player_x_pos = 0
 
-        if pressed_keys[pygame.K_d]:
+        if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
             self.player_x_pos += gv.player_v
             if self.player_x_pos + gv.player_size >= gv.SCREEN_WIDTH:
                 self.player_x_pos = gv.SCREEN_WIDTH - gv.player_size
 
-        if pressed_keys[pygame.K_w]:
+        if pressed_keys[pygame.K_w] or pressed_keys[pygame.K_UP]:
             self.player_y_pos -= gv.player_v
             if self.player_y_pos <= 0:
                 self.player_y_pos = 0
 
-        if pressed_keys[pygame.K_s]:
+        if pressed_keys[pygame.K_s] or pressed_keys[pygame.K_DOWN]:
             self.player_y_pos += gv.player_v
             if self.player_y_pos + gv.player_size >= gv.SCREEN_HIGHT:
                 self.player_y_pos = gv.SCREEN_HIGHT - gv.player_size

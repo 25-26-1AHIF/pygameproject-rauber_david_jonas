@@ -9,10 +9,10 @@ def steuerung_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     str_text = gv.FONT_BIG.render("Steuerung:", True, "white")
     zurueck_text = gv.FONT_MIDDLE.render("Zurück", True, "white")
 
-    w_text = gv.FONT_MIDDLE.render("Move up:    W", True, "white")
-    a_text = gv.FONT_MIDDLE.render("Move left:  A", True, "white")
-    s_text = gv.FONT_MIDDLE.render("Move down:  S", True, "white")
-    d_text = gv.FONT_MIDDLE.render("Move right: D", True, "white")
+    w_text = gv.FONT_MIDDLE.render("Move up:    W / ˄", True, "white")
+    a_text = gv.FONT_MIDDLE.render("Move left:  A / ˃", True, "white")
+    s_text = gv.FONT_MIDDLE.render("Move down:  S / ˅", True, "white")
+    d_text = gv.FONT_MIDDLE.render("Move right: D / ˂", True, "white")
 
     pause_text_rect = str_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 100))
     zurueck_text_rect = zurueck_text.get_rect(center=(100, 100))
