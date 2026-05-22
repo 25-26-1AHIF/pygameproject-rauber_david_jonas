@@ -1,8 +1,8 @@
 import pygame
 
 class GameVariables:
-    SCREEN_WIDTH = 1920
-    SCREEN_HIGHT = 1080
+    SCREEN_WIDTH = 500
+    SCREEN_HIGHT = 500
     FPS = 60
     player_size = 32
     player_v = 5
