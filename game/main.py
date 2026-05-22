@@ -2,6 +2,7 @@ import pygame
 from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
+from objects.player import Player
 
 def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Main Screen")
