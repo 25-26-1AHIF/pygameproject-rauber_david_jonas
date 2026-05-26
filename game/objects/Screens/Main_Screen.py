@@ -16,8 +16,8 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     exit_text_rect = exit_text.get_rect(center=(gv.SCREEN_WIDTH / 2 / 2, 450))
     str_text_rect = str_text.get_rect(center=(gv.SCREEN_WIDTH / 2 / 2, 350))
 
-    Geldsack = Bilder("../assats/Bilder/Geldsack.png", 1, pygame.Rect(0, 0, 128, 128), 1)
-    Hintergrund = Bilder("../assats/Bilder/Hintergrund.png", 16, pygame.Rect(0, 0, 1024, 1024), 10)
+    Geldsack = Bilder("assats/Bilder/Geldsack.png", 1, pygame.Rect(0, 0, 128, 128), 1)
+    Hintergrund = Bilder("assats/Bilder/Hintergrund.png", 16, pygame.Rect(0, 0, 1024, 1024), 10)
     Geldsack.load_spritesheet()
     Hintergrund.load_spritesheet()
 

@@ -14,6 +14,12 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         player_x_pos=player_x_pos,
         player_y_pos=player_y_pos
     )
+    raum = Bilder("assats/Bilder/Raum 1.png", 2,pygame.Rect(0, 0, 1024, 1024),1)
+    raum.load_spritesheet()
+    orginal_raum = raum.images
+    groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
+    raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
+
 
     while True:
         for event in pygame.event.get():
@@ -26,6 +32,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.MAIN
 
         screen.fill("black")
+        raum.draw(screen, 0,0,2)
         player.update_and_draw()
         pygame.display.flip()
         clock.tick(gv.FPS)

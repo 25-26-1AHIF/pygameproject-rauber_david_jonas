@@ -7,8 +7,8 @@ def animation_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Animation")
     frame_counter = 0
 
-    Geldsack = Bilder("../assats/Bilder/Geldsack.png", 1, pygame.Rect(0, 0, 128, 128), 1)
-    Hintergrund = Bilder("../assats/Bilder/Hintergrund.png", 16, pygame.Rect(0, 0, 1024, 1024), 2)
+    Geldsack = Bilder("assats/Bilder/Geldsack.png", 1, pygame.Rect(0, 0, 128, 128), 1)
+    Hintergrund = Bilder("assats/Bilder/Hintergrund.png", 16, pygame.Rect(0, 0, 1024, 1024), 2)
     Geldsack.load_spritesheet()
     Hintergrund.load_spritesheet()
 
