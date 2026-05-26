@@ -6,6 +6,7 @@ from objects.Screens.Play_Screen import play_screen
 from objects.Screens.Paused_Screen import paused_screen
 from objects.Screens.Steuerung_Screen import steuerung_screen
 from objects.Screens.Animation_Screen import animation_screen
+from objects.Screens.Room1_Screen import room1_screen
 
 def main():
     gv.init()
@@ -23,10 +24,14 @@ def main():
             GameScreens.actual = paused_screen(screen, clock)
         elif GameScreens.actual == GameScreens.STR:
             GameScreens.actual = steuerung_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_1:
+            GameScreens.actual = room1_screen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
+
 
     pygame.quit()
 
 if __name__ == "__main__":
     main()
+

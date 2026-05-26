@@ -4,18 +4,23 @@ from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
 from objects.player import Player
 
-def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
+
+def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
-    pygame.display.set_caption("Play Screen")
-    player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
-    player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 10
-    player = Player(
-        screen=screen,
-        player_x_pos=player_x_pos,
-        player_y_pos=player_y_pos
-    )
+    pygame.display.set_caption("Room_1 Screen")
+    frame_counter = 0
+
+
+    raum = Bilder("../assats/Bilder/Raum 1.png", 2,pygame.Rect(0, 0, 1024, 1024),80)
+    raum.load_spritesheet()
+    orginal_raum = raum.images
+    groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
+    raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
+
+
 
     while True:
+        frame_counter += 1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return GameScreens.EXIT
@@ -23,11 +28,10 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if event.key == pygame.K_SPACE:
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
-                    return GameScreens.MAIN
-                if event.key == pygame.K_q:
-                    return GameScreens.ROOM_1
+                    return GameScreens.PLAY
 
         screen.fill("black")
-        player.update_and_draw()
+        raum.draw(screen, 0,0,frame_counter)
+
         pygame.display.flip()
         clock.tick(gv.FPS)

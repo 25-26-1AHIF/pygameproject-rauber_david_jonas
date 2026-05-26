@@ -27,5 +27,6 @@ class GameScreens:
     PAUSED = ("paused")
     STR = ("str")
     EXIT = ("exit")
+    ROOM_1 = ("room1")
     actual = MAIN
 
