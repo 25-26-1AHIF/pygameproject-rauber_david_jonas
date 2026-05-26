@@ -1,11 +1,14 @@
 import pygame
 from game_variables.game_variables import GameVariables as gv
+from objects.sprites import Bilder
 
 class Player:
     def __init__(self, screen: pygame.Surface, player_x_pos, player_y_pos):
         self.player_x_pos = player_x_pos
         self.player_y_pos = player_y_pos
         self.screen = screen
+        self.sprite = Bilder("assats/Bilder/Player_moving.png",2,pygame.Rect(0,0, 100,100), 2)
+        self.sprite.load_spritesheet()
 
     def move(self, max_x_pos: int, min_x_pos: int,
              max_y_pos: int, min_y_pos: int) -> None:
@@ -34,14 +37,5 @@ class Player:
              max_y_pos: int, min_y_pos: int):
         self.move(max_x_pos, min_x_pos, max_y_pos, min_y_pos)
 
-        pygame.draw.rect(
-            surface=self.screen,
-            rect=(
-                self.player_x_pos,
-                self.player_y_pos,
-                gv.player_size,
-                gv.player_size
-            ),
-            color="red",
-            width=0
-            )
+
+        self.sprite.draw(screen=self.screen,xpos=self.player_x_pos,ypos=self.player_y_pos,frame_counter=0)
