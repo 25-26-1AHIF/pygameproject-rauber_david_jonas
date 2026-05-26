@@ -28,6 +28,6 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.ROOM_1
 
         screen.fill("black")
-        player.update_and_draw()
+        player.update_and_draw(gv.SCREEN_WIDTH, 0, gv.SCREEN_HIGHT, 0)
         pygame.display.flip()
         clock.tick(gv.FPS)

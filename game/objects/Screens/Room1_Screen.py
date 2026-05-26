@@ -9,6 +9,13 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
     frame_counter = 0
+    player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
+    player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
+    player = Player(
+        screen=screen,
+        player_x_pos=player_x_pos,
+        player_y_pos=player_y_pos
+    )
 
 
     raum = Bilder("../assats/Bilder/Raum 1.png", 2,pygame.Rect(0, 0, 1024, 1024),80)
@@ -32,6 +39,9 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
+        player.update_and_draw(gv.SCREEN_WIDTH, 0,
+                               gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
+
 
         pygame.display.flip()
         clock.tick(gv.FPS)
