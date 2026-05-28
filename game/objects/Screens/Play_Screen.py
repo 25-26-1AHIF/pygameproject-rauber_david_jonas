@@ -16,6 +16,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     )
 
     while True:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return GameScreens.EXIT
@@ -25,7 +26,8 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.MAIN
                 if event.key == pygame.K_q:
-                    return GameScreens.ROOM_1
+                    return GameScreens.RIDDLE1
+
 
         screen.fill("black")
         player.update_and_draw(gv.SCREEN_WIDTH, 0, gv.SCREEN_HIGHT, 0)

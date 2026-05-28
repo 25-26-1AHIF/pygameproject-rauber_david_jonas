@@ -7,7 +7,7 @@ class Player:
         self.player_x_pos = player_x_pos
         self.player_y_pos = player_y_pos
         self.screen = screen
-        self.sprite = Bilder("assats/Bilder/Player_moving.png",2,pygame.Rect(0,0, 100,100), 2)
+        self.sprite = Bilder("../assats/Bilder/Player_moving.png",2,pygame.Rect(0,0, 100,100), 2)
         self.sprite.load_spritesheet()
 
     def move(self, max_x_pos: int, min_x_pos: int,

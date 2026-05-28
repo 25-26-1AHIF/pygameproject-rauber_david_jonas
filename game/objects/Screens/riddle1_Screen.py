@@ -1,0 +1,104 @@
+import pygame
+import random
+from game_variables.game_variables import GameVariables as gv
+from game_variables.game_variables import GameScreens
+
+def riddle1_screen(screen, clock):
+    pygame.display.set_caption("Simon Says")
+
+    RED = (255, 0, 0)
+    DARK_RED = (120, 0, 0)
+
+    BLUE = (0, 0, 255)
+    DARK_BLUE = (0, 0, 120)
+
+    GREEN = (0, 255, 0)
+    DARK_GREEN = (0, 120, 0)
+
+    YELLOW = (255, 255, 0)
+    DARK_YELLOW = (120, 120, 0)
+
+    red_rect = pygame.Rect(100, 250, 100, 100)
+    blue_rect = pygame.Rect(250, 250, 100, 100)
+    green_rect = pygame.Rect(400, 250, 100, 100)
+    yellow_rect = pygame.Rect(550, 250, 100, 100)
+
+    colors = ["red", "blue", "green", "yellow"]
+
+    showing_colors = []
+
+    for i in range(3):
+        showing_colors.append(random.choice(colors))
+
+    while True:
+        player_input = []
+        for color in showing_colors:
+            screen.fill("black")
+            text = gv.FONT_MIDDLE.render(
+                "Merke dir die Reihenfolge und wiederhole sie",
+                True,
+                "white"
+            )
+            screen.blit(text, (100, 100))
+
+            pygame.draw.rect(screen, DARK_RED, red_rect)
+            pygame.draw.rect(screen, DARK_BLUE, blue_rect)
+            pygame.draw.rect(screen, DARK_GREEN, green_rect)
+            pygame.draw.rect(screen, DARK_YELLOW, yellow_rect)
+
+            if color == "red":
+                pygame.draw.rect(screen, RED, red_rect)
+
+            if color == "blue":
+                pygame.draw.rect(screen, BLUE, blue_rect)
+
+            if color == "green":
+                pygame.draw.rect(screen, GREEN, green_rect)
+
+            if color == "yellow":
+                pygame.draw.rect(screen, YELLOW, yellow_rect)
+
+            pygame.display.flip()
+            pygame.time.delay(700)
+
+            pygame.draw.rect(screen, DARK_RED, red_rect)
+            pygame.draw.rect(screen, DARK_BLUE, blue_rect)
+            pygame.draw.rect(screen, DARK_GREEN, green_rect)
+            pygame.draw.rect(screen, DARK_YELLOW, yellow_rect)
+
+            pygame.display.flip()
+            pygame.time.delay(300)
+
+        while True:
+            pygame.draw.rect(screen, DARK_RED, red_rect)
+            pygame.draw.rect(screen, DARK_BLUE, blue_rect)
+            pygame.draw.rect(screen, DARK_GREEN, green_rect)
+            pygame.draw.rect(screen, DARK_YELLOW, yellow_rect)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return GameScreens.EXIT
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        return GameScreens.PLAY
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if red_rect.collidepoint(event.pos):
+                        player_input.append("red")
+                    if blue_rect.collidepoint(event.pos):
+                        player_input.append("blue")
+                    if green_rect.collidepoint(event.pos):
+                        player_input.append("green")
+                    if yellow_rect.collidepoint(event.pos):
+                        player_input.append("yellow")
+                    index = len(player_input) - 1
+
+                    if player_input[index] != showing_colors[index]:
+                        break
+                    if player_input == showing_colors:
+                        return GameScreens.ROOM_1
+            else:
+                pygame.display.flip()
+                clock.tick(gv.FPS)
+                continue
+
+            break

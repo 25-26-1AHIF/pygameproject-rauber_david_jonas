@@ -28,5 +28,6 @@ class GameScreens:
     STR = ("str")
     EXIT = ("exit")
     ROOM_1 = ("room1")
+    RIDDLE1 = ("riddle1")
     actual = MAIN
 
