@@ -43,7 +43,7 @@ def animation_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         frame_counter += 1
 
         if groesse[0] > gv.SCREEN_WIDTH * 3:
-            return GameScreens.PLAY
+            return GameScreens.MODE
 
         pygame.display.flip()
         clock.tick(60)
