@@ -84,12 +84,32 @@ def riddle1_screen(screen, clock):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if red_rect.collidepoint(event.pos):
                         player_input.append("red")
+                        pygame.draw.rect(screen, RED, red_rect)
+                        pygame.display.flip()
+                        pygame.time.delay(300)
+                        pygame.draw.rect(screen, DARK_RED, red_rect)
+
                     if blue_rect.collidepoint(event.pos):
                         player_input.append("blue")
+                        pygame.draw.rect(screen, BLUE, blue_rect)
+                        pygame.display.flip()
+                        pygame.time.delay(300)
+                        pygame.draw.rect(screen, BLUE, blue_rect)
+
                     if green_rect.collidepoint(event.pos):
                         player_input.append("green")
+                        pygame.draw.rect(screen, GREEN, green_rect)
+                        pygame.display.flip()
+                        pygame.time.delay(300)
+                        pygame.draw.rect(screen, DARK_GREEN, green_rect)
+
                     if yellow_rect.collidepoint(event.pos):
                         player_input.append("yellow")
+                        pygame.draw.rect(screen, YELLOW, yellow_rect)
+                        pygame.display.flip()
+                        pygame.time.delay(300)
+                        pygame.draw.rect(screen, DARK_YELLOW, yellow_rect)
+
                     index = len(player_input) - 1
 
                     if player_input[index] != showing_colors[index]:
