@@ -3,6 +3,7 @@ from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
 from objects.player import Player
+from objects.Coins import Coins
 
 def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -15,8 +16,9 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         player_y_pos=player_y_pos
     )
 
-    while True:
+    coins = Coins(screen)
 
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return GameScreens.EXIT
@@ -28,8 +30,8 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if event.key == pygame.K_q:
                     return GameScreens.RIDDLE1
 
-
         screen.fill("black")
         player.update_and_draw(gv.SCREEN_WIDTH, 0, gv.SCREEN_HIGHT, 0)
+        coins.show_coins()
         pygame.display.flip()
         clock.tick(gv.FPS)
