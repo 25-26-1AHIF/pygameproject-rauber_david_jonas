@@ -15,7 +15,15 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         player_x_pos=player_x_pos,
         player_y_pos=player_y_pos
     )
+    frame_counter = 0
 
+
+    straße = Bilder("../assats/Bilder/Häuser_reihe_fertig.png", 1, pygame.Rect(0, 0, 6144, 1024), 80)
+    straße.load_spritesheet()
+    orginal_straße = straße.images
+    groesse_straße = (gv.SCREEN_WIDTH*6, gv.SCREEN_HIGHT)
+    straße.images = [pygame.transform.smoothscale(img, groesse_straße) for img in orginal_straße]  # mit KI
+    x_pos_hintergrund = 1
     coins = Coins(screen)
 
     while True:
@@ -29,9 +37,17 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.MAIN
                 if event.key == pygame.K_q:
                     return GameScreens.RIDDLE1
+            pressed_keys = pygame.key.get_pressed()
+            if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
+                if x_pos_hintergrund < -10:
+                    x_pos_hintergrund += 10
+            if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
+                if x_pos_hintergrund > -6134:
+                    x_pos_hintergrund += -10
 
         screen.fill("black")
-        player.update_and_draw(gv.SCREEN_WIDTH, 0, gv.SCREEN_HIGHT, 0)
+        straße.draw(screen,x_pos_hintergrund, 0, frame_counter)
+        player.update_and_draw(max_x_pos=gv.SCREEN_WIDTH/2, min_x_pos=gv.SCREEN_WIDTH/2-1, max_y_pos=gv.SCREEN_HIGHT, min_y_pos=0)
         coins.show_coins()
         pygame.display.flip()
         clock.tick(gv.FPS)
