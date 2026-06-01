@@ -3,6 +3,7 @@ from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
 from objects.Coins import Coins
+import json
 
 def paused_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Paused Screen")
@@ -35,3 +36,4 @@ def paused_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         coins.show_coins()
         pygame.display.flip()
         clock.tick(gv.FPS)
+

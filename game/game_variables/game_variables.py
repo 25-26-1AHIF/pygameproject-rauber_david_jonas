@@ -30,5 +30,6 @@ class GameScreens:
     MODE = ("mode")
     ROOM_1 = ("room1")
     RIDDLE1 = ("riddle1")
+    RIDDLE2 = ("riddle2")
     actual = MAIN
 
