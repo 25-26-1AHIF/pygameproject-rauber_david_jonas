@@ -7,8 +7,11 @@ class Player:
         self.player_x_pos = player_x_pos
         self.player_y_pos = player_y_pos
         self.screen = screen
-        self.sprite = Bilder("../assats/Bilder/Player_moving.png",2,pygame.Rect(0,0, 100,100), 2)
+        self.sprite = Bilder("../assats/Bilder/Player_moving.png",2,pygame.Rect(0,0, 100,100), 30)
         self.sprite.load_spritesheet()
+        self.frame_counter = 0
+        self.speed = 0
+
 
     def move(self, max_x_pos: int, min_x_pos: int,
              max_y_pos: int, min_y_pos: int) -> None:
@@ -34,8 +37,10 @@ class Player:
                 self.player_y_pos = max_y_pos - gv.player_size
 
     def update_and_draw(self, max_x_pos: int, min_x_pos: int,
-             max_y_pos: int, min_y_pos: int):
+                        max_y_pos: int, min_y_pos: int):
         self.move(max_x_pos, min_x_pos, max_y_pos, min_y_pos)
-
-
-        self.sprite.draw(screen=self.screen,xpos=self.player_x_pos,ypos=self.player_y_pos,frame_counter=0)
+        self.speed += 1/self.sprite.animation_speed
+        if self.speed >= 1:
+            self.frame_counter += 1
+        self.sprite.draw(screen=self.screen, xpos=self.player_x_pos, ypos=self.player_y_pos,
+                         frame_counter=self.frame_counter)

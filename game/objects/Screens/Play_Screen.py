@@ -47,7 +47,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         screen.fill("black")
         straße.draw(screen,x_pos_hintergrund, 0, frame_counter)
-        player.update_and_draw(max_x_pos=gv.SCREEN_WIDTH/2, min_x_pos=gv.SCREEN_WIDTH/2-1, max_y_pos=gv.SCREEN_HIGHT, min_y_pos=0)
+        player.update_and_draw(max_x_pos=gv.SCREEN_WIDTH/2, min_x_pos=gv.SCREEN_WIDTH/2-1, max_y_pos=gv.SCREEN_HIGHT, min_y_pos=gv.SCREEN_HIGHT/3*2)
         coins.show_coins()
         pygame.display.flip()
         clock.tick(gv.FPS)
