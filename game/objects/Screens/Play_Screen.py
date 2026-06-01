@@ -4,6 +4,7 @@ from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
 from objects.player import Player
 from objects.Coins import Coins
+from objects.Uhr import Uhr
 
 def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -25,6 +26,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     straße.images = [pygame.transform.smoothscale(img, groesse_straße) for img in orginal_straße]  # mit KI
     x_pos_hintergrund = 1
     coins = Coins(screen)
+    uhr = Uhr(screen)
 
     while True:
         for event in pygame.event.get():
@@ -35,8 +37,11 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.MAIN
+
                 if event.key == pygame.K_q:
-                    return GameScreens.RIDDLE1
+                    return GameScreens.RIDDLE1 # TODO
+                if event.key == pygame.K_e:
+                    return GameScreens.RIDDLE2
             pressed_keys = pygame.key.get_pressed()
             if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
                 if x_pos_hintergrund < -10:
@@ -45,9 +50,11 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if x_pos_hintergrund > -6134:
                     x_pos_hintergrund += -10
 
-        screen.fill("black")
+        screen.fill("yellow")
         straße.draw(screen,x_pos_hintergrund, 0, frame_counter)
         player.update_and_draw(max_x_pos=gv.SCREEN_WIDTH/2, min_x_pos=gv.SCREEN_WIDTH/2-1, max_y_pos=gv.SCREEN_HIGHT, min_y_pos=0)
         coins.show_coins()
+        uhr.uhr_update()
         pygame.display.flip()
         clock.tick(gv.FPS)
+
