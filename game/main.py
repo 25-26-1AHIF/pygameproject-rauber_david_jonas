@@ -10,6 +10,7 @@ from objects.Screens.Room1_Screen import room1_screen
 from objects.Screens.riddle1_Screen import riddle1_screen
 from objects.Screens.Mode_Screen import mode_screen
 from objects.Screens.riddle2_Screen import riddle2_screen
+from objects.Screens.Gang_1 import Gang_1
 
 def main():
     gv.init()
@@ -35,6 +36,8 @@ def main():
             GameScreens.actual = riddle1_screen(screen, clock)
         elif GameScreens.actual == GameScreens.RIDDLE2:
             GameScreens.actual = riddle2_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.GANG1:
+            GameScreens.actual = Gang_1(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
 
