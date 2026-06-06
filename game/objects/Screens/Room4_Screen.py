@@ -5,7 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 
 
-def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
+def room4_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
     frame_counter = 0
@@ -18,7 +18,7 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     )
 
 
-    raum = Bilder("../assats/Bilder/Rooms/Raum 1.png", 2,pygame.Rect(0, 0, 1024, 1024),80)
+    raum = Bilder("../assats/Bilder/Rooms/Küche_1.png", 1,pygame.Rect(0, 0, 1024, 1024),80)
     raum.load_spritesheet()
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
@@ -41,10 +41,8 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         raum.draw(screen, 0,0,frame_counter)
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
-
-        if player.player_x_pos > gv.SCREEN_WIDTH - 60:
+        if player.player_x_pos < 60:
             return GameScreens.GANG1
-
 
         pygame.display.flip()
         clock.tick(gv.FPS)
