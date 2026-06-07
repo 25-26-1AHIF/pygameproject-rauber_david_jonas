@@ -7,6 +7,16 @@ class GameVariables:
     player_size = 32
     player_v = 5
 
+    coins = 0
+    player_x = SCREEN_HIGHT / 2 - player_size / 2
+    player_y = SCREEN_HIGHT - player_size - 10
+    background_x = 1
+    current_screen = "main"
+    paused_from = "play"
+
+    stunden = 0
+    sekunden = 0
+
     FONT_BIG: pygame.font.Font = None
     FONT_MIDDLE: pygame.font.Font = None
     FONT_SMALL: pygame.font.Font = None
@@ -28,8 +38,10 @@ class GameScreens:
     STR = ("str")
     EXIT = ("exit")
     MODE = ("mode")
+    RIDDLE3 = ("riddle3")
+    RIDDLE4 = ("riddle4")
+    RIDDLE5 = ("riddle5")
     ROOM_1 = ("room1")
     RIDDLE1 = ("riddle1")
     RIDDLE2 = ("riddle2")
     actual = MAIN
-

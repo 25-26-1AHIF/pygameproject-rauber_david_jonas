@@ -18,12 +18,12 @@ class Player:
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
             self.player_x_pos -= gv.player_v
-            if self.player_x_pos <= min_x_pos:
+            if self.player_x_pos < min_x_pos:
                 self.player_x_pos = min_x_pos
 
         if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
             self.player_x_pos += gv.player_v
-            if self.player_x_pos + gv.player_size >= max_x_pos:
+            if self.player_x_pos > max_x_pos - gv.player_size:
                 self.player_x_pos = max_x_pos - gv.player_size
 
         if pressed_keys[pygame.K_w] or pressed_keys[pygame.K_UP]:
@@ -35,6 +35,9 @@ class Player:
             self.player_y_pos += gv.player_v
             if self.player_y_pos + gv.player_size >= max_y_pos:
                 self.player_y_pos = max_y_pos - gv.player_size
+
+        gv.player_x = self.player_x_pos
+        gv.player_y = self.player_y_pos
 
     def update_and_draw(self, max_x_pos: int, min_x_pos: int,
                         max_y_pos: int, min_y_pos: int):

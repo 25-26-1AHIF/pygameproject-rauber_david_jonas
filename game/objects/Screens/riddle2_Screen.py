@@ -7,6 +7,7 @@ from objects.sprites import Bilder
 def riddle2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Riddle2 Screen")
+    gv.current_screen = "riddle2"
 
     while True:
         schalter = []
@@ -48,6 +49,7 @@ def riddle2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 return GameScreens.EXIT
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    gv.paused_from = GameScreens.RIDDLE2
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY

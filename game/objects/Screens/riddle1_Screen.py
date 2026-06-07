@@ -5,6 +5,7 @@ from game_variables.game_variables import GameScreens
 
 def riddle1_screen(screen, clock):
     pygame.display.set_caption("Simon Says")
+    gv.current_screen = "riddle1"
 
     RED = (255, 0, 0)
     DARK_RED = (120, 0, 0)
@@ -81,6 +82,9 @@ def riddle1_screen(screen, clock):
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         return GameScreens.PLAY
+                    if event.key == pygame.K_SPACE:
+                        gv.paused_from = GameScreens.RIDDLE1
+                        return GameScreens.PAUSED
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if red_rect.collidepoint(event.pos):
                         player_input.append("red")
@@ -110,7 +114,7 @@ def riddle1_screen(screen, clock):
                         pygame.time.delay(300)
                         pygame.draw.rect(screen, DARK_YELLOW, yellow_rect)
 
-                    index = len(player_input) - 1
+                    index = len(player_input) - 1 # das -1 mit KI Hilfe
 
                     if player_input[index] != showing_colors[index]:
                         break
