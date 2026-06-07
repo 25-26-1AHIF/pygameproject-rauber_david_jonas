@@ -119,7 +119,7 @@ def riddle1_screen(screen, clock):
                     if player_input[index] != showing_colors[index]:
                         break
                     if player_input == showing_colors:
-                        return GameScreens.ROOM_1
+                        return GameScreens.GANG1
             else:
                 pygame.display.flip()
                 clock.tick(gv.FPS)

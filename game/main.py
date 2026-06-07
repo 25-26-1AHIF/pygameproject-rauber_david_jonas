@@ -7,13 +7,17 @@ from objects.Screens.Paused_Screen import paused_screen
 from objects.Screens.Steuerung_Screen import steuerung_screen
 from objects.Screens.Animation_Screen import animation_screen
 from objects.Screens.Room1_Screen import room1_screen
+from objects.Screens.Room2_Screen import room2_screen
+from objects.Screens.Room3_Screen import room3_screen
+from objects.Screens.Room4_Screen import room4_screen
 from objects.Screens.riddle1_Screen import riddle1_screen
-from objects.Screens.Mode_Screen import mode_screen
 from objects.Screens.riddle2_Screen import riddle2_screen
 from objects.Screens.riddle3_Screen import riddle3_screen
 from objects.Screens.riddle4_Screen import riddle4_screen
 from objects.Screens.riddle5_Screen import riddle5_screen
-from objects.save_game import load_game, reset_game
+from objects.Screens.Mode_Screen import mode_screen
+from objects.Screens.Gang_1 import Gang_1
+from objects.save_game import load_game,reset_game
 
 
 def main():
@@ -44,6 +48,12 @@ def main():
             GameScreens.actual = steuerung_screen(screen, clock)
         elif GameScreens.actual == GameScreens.ROOM_1:
             GameScreens.actual = room1_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_2:
+            GameScreens.actual = room2_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_3:
+            GameScreens.actual = room3_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_4:
+            GameScreens.actual = room4_screen(screen, clock)
         elif GameScreens.actual == GameScreens.MODE:
             GameScreens.actual = mode_screen(screen, clock)
         elif GameScreens.actual == GameScreens.RIDDLE1:
@@ -56,6 +66,8 @@ def main():
             GameScreens.actual = riddle4_screen(screen, clock)
         elif GameScreens.actual == GameScreens.RIDDLE5:
             GameScreens.actual = riddle5_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.GANG1:
+            GameScreens.actual = Gang_1(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
     reset_game()

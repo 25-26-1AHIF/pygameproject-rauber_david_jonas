@@ -27,7 +27,7 @@ def riddle3_screen(screen, clock):
                     return GameScreens.PLAY
                 if event.key == pygame.K_RETURN:
                     if eingabe == zahl:
-                        return GameScreens.ROOM_1
+                        return GameScreens.GANG1
                     eingabe = ""
                 elif event.key == pygame.K_BACKSPACE:
                     eingabe = eingabe[:-1]

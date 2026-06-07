@@ -18,7 +18,7 @@ def riddle5_screen(screen, clock):
                     return GameScreens.PLAY
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if ziel.collidepoint(event.pos):
-                    return GameScreens.ROOM_1
+                    return GameScreens.GANG1
 
         aktuelle_zeit = pygame.time.get_ticks()
 

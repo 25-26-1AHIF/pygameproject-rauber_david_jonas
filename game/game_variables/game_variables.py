@@ -42,6 +42,10 @@ class GameScreens:
     RIDDLE4 = ("riddle4")
     RIDDLE5 = ("riddle5")
     ROOM_1 = ("room1")
+    ROOM_2 = ("room2")
+    ROOM_3 = ("room3")
+    ROOM_4 = ("room4")
     RIDDLE1 = ("riddle1")
     RIDDLE2 = ("riddle2")
+    GANG1 = ("Gang_1")
     actual = MAIN
