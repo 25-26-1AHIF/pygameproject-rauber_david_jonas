@@ -48,4 +48,5 @@ class GameScreens:
     RIDDLE1 = ("riddle1")
     RIDDLE2 = ("riddle2")
     GANG1 = ("Gang_1")
+    WAGEN = ("WAGEN")
     actual = MAIN

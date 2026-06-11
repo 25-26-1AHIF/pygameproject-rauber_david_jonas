@@ -18,6 +18,7 @@ from objects.Screens.riddle5_Screen import riddle5_screen
 from objects.Screens.Mode_Screen import mode_screen
 from objects.Screens.Gang_1 import Gang_1
 from objects.save_game import load_game,reset_game
+from objects.Screens.Wohnwagen import Wohnwagen
 
 
 def main():
@@ -68,6 +69,8 @@ def main():
             GameScreens.actual = riddle5_screen(screen, clock)
         elif GameScreens.actual == GameScreens.GANG1:
             GameScreens.actual = Gang_1(screen, clock)
+        elif GameScreens.actual == GameScreens.WAGEN:
+            GameScreens.actual = Wohnwagen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
     reset_game()

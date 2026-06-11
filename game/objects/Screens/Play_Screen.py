@@ -5,7 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Coins import Coins
 from objects.Uhr import Uhr
-import random
+
 
 def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -32,13 +32,13 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     coins = Coins(screen)
     uhr = Uhr(screen)
 
-    tueren_relativ = [
-        (0.080, 0.55, 0.04, 0.25),
-        (0.245, 0.55, 0.04, 0.25),
-        (0.405, 0.55, 0.04, 0.25),
-        (0.745, 0.55, 0.04, 0.25),
-        (0.915, 0.55, 0.04, 0.25)
-    ]
+    # ### TÜREN ALS EINZELNE VARIABLEN BERECHNEN ###
+    # Wir berechnen die Rects einmalig vor der Schleife und speichern sie ab.
+    tuer_1_rect = pygame.Rect(0.080 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
+    tuer_2_rect = pygame.Rect(0.245 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
+    tuer_3_rect = pygame.Rect(0.405 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
+    tuer_4_rect = pygame.Rect(0.745 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
+    tuer_5_rect = pygame.Rect(0.915 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
 
     while True:
         for event in pygame.event.get():
@@ -51,23 +51,27 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.MAIN
+
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                mx, my = event.pos
-                bg_click_x = mx - x_pos_hintergrund
-                bg_click_y = my
+                event_x, event_y = event.pos
+                x_Hintergrund = event_x - x_pos_hintergrund
+                y_Hintergrund = event_y
 
-                for tx, ty, tw, th in tueren_relativ:
-                    door_rect = pygame.Rect(
-                        tx * bg_width,
-                        ty * bg_height,
-                        tw * bg_width,
-                        th * bg_height
-                    )
 
-                    if door_rect.collidepoint(bg_click_x, bg_click_y):
-                        return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
-                                              GameScreens.RIDDLE3, GameScreens.RIDDLE4,
-                                              GameScreens.RIDDLE5])
+                if tuer_1_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    return GameScreens.RIDDLE1
+
+                elif tuer_2_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    return GameScreens.RIDDLE2
+
+                elif tuer_3_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    return GameScreens.RIDDLE3
+
+                elif tuer_4_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    return GameScreens.RIDDLE4
+
+                elif tuer_5_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    return GameScreens.RIDDLE5
 
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
@@ -75,15 +79,15 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 x_pos_hintergrund += 10
 
         if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
-            if x_pos_hintergrund > -6134:
+            if x_pos_hintergrund > -3950:
                 x_pos_hintergrund -= 10
         gv.background_x = x_pos_hintergrund
 
         screen.fill("black")
         straße.draw(screen, x_pos_hintergrund, 0, frame_counter)
         player.update_and_draw(
-            max_x_pos=450,
-            min_x_pos=50,
+            max_x_pos=gv.SCREEN_WIDTH / 2 + 1,
+            min_x_pos=gv.SCREEN_WIDTH / 2,
             max_y_pos=gv.SCREEN_HIGHT,
             min_y_pos=gv.SCREEN_HIGHT / 2 + 100
         )
@@ -92,4 +96,3 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         pygame.display.flip()
         clock.tick(gv.FPS)
-
