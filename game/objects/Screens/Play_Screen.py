@@ -1,4 +1,5 @@
 import pygame
+import random
 from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
@@ -59,19 +60,30 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
                 if tuer_1_rect.collidepoint(x_Hintergrund, y_Hintergrund):
-                    return GameScreens.RIDDLE1
+                    return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
+                                         GameScreens.RIDDLE3, GameScreens.RIDDLE4,
+                                         GameScreens.RIDDLE5])
 
                 elif tuer_2_rect.collidepoint(x_Hintergrund, y_Hintergrund):
-                    return GameScreens.RIDDLE2
+                    return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
+                                         GameScreens.RIDDLE3, GameScreens.RIDDLE4,
+                                         GameScreens.RIDDLE5])
 
                 elif tuer_3_rect.collidepoint(x_Hintergrund, y_Hintergrund):
-                    return GameScreens.RIDDLE3
+                    gv.wohnwagen = True
+                    return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
+                                         GameScreens.RIDDLE3, GameScreens.RIDDLE4,
+                                         GameScreens.RIDDLE5])
 
                 elif tuer_4_rect.collidepoint(x_Hintergrund, y_Hintergrund):
-                    return GameScreens.RIDDLE4
+                    return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
+                                         GameScreens.RIDDLE3, GameScreens.RIDDLE4,
+                                         GameScreens.RIDDLE5])
 
                 elif tuer_5_rect.collidepoint(x_Hintergrund, y_Hintergrund):
-                    return GameScreens.RIDDLE5
+                    return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
+                                         GameScreens.RIDDLE3, GameScreens.RIDDLE4,
+                                         GameScreens.RIDDLE5])
 
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
@@ -86,8 +98,8 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         screen.fill("black")
         straße.draw(screen, x_pos_hintergrund, 0, frame_counter)
         player.update_and_draw(
-            max_x_pos=gv.SCREEN_WIDTH / 2 + 1,
-            min_x_pos=gv.SCREEN_WIDTH / 2,
+            max_x_pos=gv.SCREEN_WIDTH / 2 +1,
+            min_x_pos=0,
             max_y_pos=gv.SCREEN_HIGHT,
             min_y_pos=gv.SCREEN_HIGHT / 2 + 100
         )

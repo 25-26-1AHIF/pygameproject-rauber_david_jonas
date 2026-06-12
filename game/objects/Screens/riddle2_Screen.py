@@ -111,7 +111,10 @@ def riddle2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                             schalter[2] = True
 
                 if schalter == [True, True, True, True]:
-                    return GameScreens.GANG1
+                    if gv.wohnwagen == True:
+                        return GameScreens.WAGEN
+                    else:
+                        return GameScreens.GANG1
 
                 screen.fill("black")
 

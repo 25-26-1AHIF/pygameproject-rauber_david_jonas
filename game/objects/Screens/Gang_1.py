@@ -34,6 +34,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
                              gv.SCREEN_HIGHT * 0.20)  # Tür Hinten rechts
     door4_rect = pygame.Rect(gv.SCREEN_WIDTH * 0.64, gv.SCREEN_HIGHT * 0.40, gv.SCREEN_WIDTH * 0.07,
                              gv.SCREEN_HIGHT * 0.35)  # Tür Rechts
+    exit_rect = pygame.Rect(0, gv.SCREEN_HIGHT-100, gv.SCREEN_WIDTH, 10)
 
     while True:
         frame_counter += 1
@@ -48,7 +49,8 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
 
         screen.fill("black")
         raum.draw(screen, 0, 0, frame_counter)
-        player.update_and_draw(gv.SCREEN_WIDTH, 0, gv.SCREEN_HIGHT, 0)
+        player.update_and_draw(gv.SCREEN_WIDTH - 280, gv.SCREEN_WIDTH / 2 / 2,
+                               gv.SCREEN_HIGHT - 50, gv.SCREEN_HIGHT / 2)
 
 
 
@@ -63,6 +65,8 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
             return GameScreens.ROOM_3
         elif player_rect.colliderect(door4_rect):
             return GameScreens.ROOM_4
+        elif player_rect.colliderect(exit_rect):
+            return GameScreens.PLAY
 
         #hittboxen für türen zeichnen
         # pygame.draw.rect(screen, "red", door1_rect, 2)
@@ -70,6 +74,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         # pygame.draw.rect(screen, "green", door3_rect, 2)
         # pygame.draw.rect(screen, "yellow", door4_rect, 2)
         # pygame.draw.rect(screen, "white", player_rect, 2)
+        # pygame.draw.rect(screen, "red", exit_rect)
 
 
         pygame.display.flip()

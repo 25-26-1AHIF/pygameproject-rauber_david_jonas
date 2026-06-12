@@ -23,7 +23,10 @@ def riddle4_screen(screen, clock):
                 for i in range(len(buttons)):
                     if buttons[i].collidepoint(event.pos):
                         if i == richtiger:
-                            return GameScreens.GANG1
+                            if gv.wohnwagen == True:
+                                return GameScreens.WAGEN
+                            else:
+                                return GameScreens.GANG1
 
         screen.fill("black")
         text = gv.FONT_MIDDLE.render("Finde den richtigen Knopf",True,

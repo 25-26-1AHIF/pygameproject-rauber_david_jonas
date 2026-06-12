@@ -7,6 +7,8 @@ class GameVariables:
     player_size = 32
     player_v = 5
 
+    wohnwagen: bool = False
+
     coins = 0
     player_x = SCREEN_HIGHT / 2 - player_size / 2
     player_y = SCREEN_HIGHT - player_size - 10
