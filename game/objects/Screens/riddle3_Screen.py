@@ -16,7 +16,7 @@ def riddle3_screen(screen, clock):
     pygame.display.flip()
     pygame.time.delay(3000)
 
-    eingabe = ""
+    eingabe = "" # Mit Hilfe von KI
 
     while True:
         for event in pygame.event.get():
@@ -28,6 +28,11 @@ def riddle3_screen(screen, clock):
                 if event.key == pygame.K_RETURN:
                     if eingabe == zahl:
                         return GameScreens.WAGEN
+                    else:
+                        screen.fill("black")
+                        screen.blit(text, (300, 250))
+                        pygame.display.flip()
+                        pygame.time.delay(3000)
                     eingabe = ""
                 elif event.key == pygame.K_BACKSPACE:
                     eingabe = eingabe[:-1]
