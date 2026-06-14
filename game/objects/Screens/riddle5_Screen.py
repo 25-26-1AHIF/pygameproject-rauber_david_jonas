@@ -19,6 +19,7 @@ def riddle5_screen(screen, clock):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if ziel.collidepoint(event.pos):
                     if gv.wohnwagen == True:
+                        gv.wohnwagen = False
                         return GameScreens.WAGEN
                     else:
                         return GameScreens.GANG1

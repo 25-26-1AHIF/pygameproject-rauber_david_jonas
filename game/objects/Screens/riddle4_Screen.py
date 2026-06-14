@@ -57,6 +57,7 @@ def riddle4_screen(screen, clock):
 
         if player_rect.colliderect(ziel_rect):
             if gv.wohnwagen == True:
+                gv.wohnwagen = False
                 return GameScreens.WAGEN
             else:
                 return GameScreens.GANG1

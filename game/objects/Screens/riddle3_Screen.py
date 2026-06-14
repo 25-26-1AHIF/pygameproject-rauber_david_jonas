@@ -28,6 +28,7 @@ def riddle3_screen(screen, clock):
                 if event.key == pygame.K_RETURN:
                     if eingabe == zahl:
                         if gv.wohnwagen == True:
+                            gv.wohnwagen = False
                             return GameScreens.WAGEN
                         else:
                             return GameScreens.GANG1

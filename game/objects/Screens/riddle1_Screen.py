@@ -120,6 +120,7 @@ def riddle1_screen(screen, clock):
                         break
                     if player_input == showing_colors:
                         if gv.wohnwagen == True:
+                            gv.wohnwagen = False
                             return GameScreens.WAGEN
                         else:
                             return GameScreens.GANG1
