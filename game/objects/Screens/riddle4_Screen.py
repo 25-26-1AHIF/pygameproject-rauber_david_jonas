@@ -27,22 +27,22 @@ def riddle4_screen(screen, clock):
                     return GameScreens.PLAY
 
         pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[pygame.K_w]:
+        if pressed_keys[pygame.K_w] or pressed_keys[pygame.K_UP]:
             if player_ypos <= 0:
                 player_ypos = 0
             else:
                 player_ypos -= 5
-        if pressed_keys[pygame.K_s]:
+        if pressed_keys[pygame.K_s] or pressed_keys[pygame.K_DOWN]:
             if player_ypos >= gv.SCREEN_HIGHT - gv.player_size:
                 player_ypos = gv.SCREEN_HIGHT - gv.player_size
             else:
                 player_ypos += 5
-        if pressed_keys[pygame.K_a]:
+        if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
             if player_xpos <= 0:
                 player_xpos = 0
             else:
                 player_xpos -= 5
-        if pressed_keys[pygame.K_d]:
+        if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
             if player_xpos >= gv.SCREEN_WIDTH - gv.player_size:
                 player_xpos = gv.SCREEN_WIDTH - gv.player_size
             else:
