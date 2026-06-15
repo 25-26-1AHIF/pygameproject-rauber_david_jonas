@@ -93,7 +93,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 x_pos_hintergrund += 10
 
         if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
-            if x_pos_hintergrund > -3900:
+            if x_pos_hintergrund > -5000:
                 x_pos_hintergrund -= 10
         gv.background_x = x_pos_hintergrund
 
