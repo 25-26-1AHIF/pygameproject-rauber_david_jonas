@@ -31,10 +31,20 @@ def main():
         GameScreens.actual = GameScreens.PLAY
     elif gv.current_screen == "room1":
         GameScreens.actual = GameScreens.ROOM_1
+    elif gv.current_screen == "room2":
+        GameScreens.actual = GameScreens.ROOM_2
+    elif gv.current_screen == "room3":
+        GameScreens.actual = GameScreens.ROOM_3
+    elif gv.current_screen == "room4":
+        GameScreens.actual = GameScreens.ROOM_4
     elif gv.current_screen == "riddle1":
         GameScreens.actual = GameScreens.RIDDLE1
     elif gv.current_screen == "riddle2":
         GameScreens.actual = GameScreens.RIDDLE2
+    elif gv.current_screen == "gang1":
+        GameScreens.actual = GameScreens.GANG1
+    elif gv.current_screen == "wohnwagen":
+        GameScreens.actual = GameScreens.WAGEN
 
     while True:
         if GameScreens.actual == GameScreens.MAIN:

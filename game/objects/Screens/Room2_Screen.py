@@ -3,12 +3,16 @@ from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
 from objects.player import Player
-
+from objects.Uhr import Uhr
+from objects.Coins import Coins
 
 def room2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
+    gv.current_screen = "room2"
     frame_counter = 0
+    uhr = Uhr(screen)
+    coins = Coins(screen)
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
     player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
     player = Player(
@@ -33,6 +37,7 @@ def room2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 return GameScreens.EXIT
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    gv.paused_from = GameScreens.ROOM_2
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
@@ -43,7 +48,7 @@ def room2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
         if player.player_x_pos > gv.SCREEN_WIDTH - 60:
             return GameScreens.GANG1
-
-
+        uhr.uhr_update()
+        coins.show_coins()
         pygame.display.flip()
         clock.tick(gv.FPS)

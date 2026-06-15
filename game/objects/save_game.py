@@ -19,8 +19,8 @@ def save_game():
 def reset_game():
     daten = {
         "coins": 0,
-        "player_x": 384,
-        "player_y": 558,
+        "player_x": gv.SCREEN_WIDTH / 2,
+        "player_y": gv.SCREEN_HIGHT - 100,
         "screen": "main",
         "stunden": 0,
         "sekunden": 0
@@ -40,9 +40,8 @@ def load_game():
         gv.player_y = daten["player_y"]
         gv.current_screen = daten["screen"]
         gv.background_x = daten["background_x"]
-
-        gv.stunden = daten["stunden"]
-        gv.sekunden = daten["sekunden"]
+        gv.stunden = daten["stunde"]
+        gv.sekunden = daten["sekundnen"]
 
     except:
         pass

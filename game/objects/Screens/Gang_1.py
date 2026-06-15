@@ -3,13 +3,16 @@ from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
 from objects.player import Player
-
+from objects.Uhr import Uhr
+from objects.Coins import Coins
 
 def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
+    gv.current_screen = "gang1"
     frame_counter = 0
-
+    uhr = Uhr(screen)
+    coins = Coins(screen)
     # Spieler initialisieren
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
     player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
@@ -43,6 +46,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
                 return GameScreens.EXIT
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    gv.paused_from = GameScreens.GANG1
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
@@ -76,6 +80,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         # pygame.draw.rect(screen, "white", player_rect, 2)
         # pygame.draw.rect(screen, "red", exit_rect)
 
-
+        uhr.uhr_update()
+        coins.show_coins()
         pygame.display.flip()
         clock.tick(gv.FPS)
