@@ -21,11 +21,11 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     )
     frame_counter = 0
 
-    straße = Bilder("../assats/Bilder/Häuser_reihe_fertig.png", 1, pygame.Rect(0, 0, 6144, 1024), 80)
+    straße = Bilder("../assats/Bilder/Häuser_reihe_fertig.png", 1, pygame.Rect(0, 0, 8192, 1024), 80)
     straße.load_spritesheet()
     orginal_straße = straße.images
 
-    bg_width = gv.SCREEN_WIDTH * 6
+    bg_width = gv.SCREEN_WIDTH * 8
     bg_height = gv.SCREEN_HIGHT
     groesse_straße = (bg_width, bg_height)
     straße.images = [pygame.transform.smoothscale(img, groesse_straße) for img in orginal_straße]
@@ -34,12 +34,14 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     uhr = Uhr(screen)
 
     # ### TÜREN ALS EINZELNE VARIABLEN BERECHNEN ###
-    # Wir berechnen die Rects einmalig vor der Schleife und speichern sie ab.
-    tuer_1_rect = pygame.Rect(0.080 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
-    tuer_2_rect = pygame.Rect(0.245 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
-    tuer_3_rect = pygame.Rect(0.405 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
-    tuer_4_rect = pygame.Rect(0.745 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
-    tuer_5_rect = pygame.Rect(0.915 * bg_width, 0.55 * bg_height, 0.04 * bg_width, 0.25 * bg_height)
+    # Berechnung basiert auf den exakten Pixel-Koordinaten des Originalbildes (8192 x 1024)
+    x_scale = bg_width / 8192.0
+    y_scale = bg_height / 1024.0
+    tuer_1_rect = pygame.Rect(1535 * x_scale, 555 * y_scale, 85 * x_scale, 160 * y_scale)
+    tuer_2_rect = pygame.Rect(2515 * x_scale, 535 * y_scale, 85 * x_scale, 160 * y_scale)
+    tuer_4_rect = pygame.Rect(5580 * x_scale, 565 * y_scale, 105 * x_scale, 185 * y_scale)
+    tuer_3_rect = pygame.Rect(3490 * x_scale, 560 * y_scale, 95 * x_scale, 150 * y_scale)
+    tuer_5_rect = pygame.Rect(6635 * x_scale, 555 * y_scale, 85 * x_scale, 160 * y_scale)
 
     while True:
         for event in pygame.event.get():
@@ -91,15 +93,15 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 x_pos_hintergrund += 10
 
         if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
-            if x_pos_hintergrund > -3950:
+            if x_pos_hintergrund > -3900:
                 x_pos_hintergrund -= 10
         gv.background_x = x_pos_hintergrund
 
         screen.fill("black")
         straße.draw(screen, x_pos_hintergrund, 0, frame_counter)
         player.update_and_draw(
-            max_x_pos=gv.SCREEN_WIDTH / 2 +1,
-            min_x_pos=0,
+            max_x_pos=gv.SCREEN_WIDTH - 200,
+            min_x_pos=200,
             max_y_pos=gv.SCREEN_HIGHT,
             min_y_pos=gv.SCREEN_HIGHT / 2 + 100
         )
