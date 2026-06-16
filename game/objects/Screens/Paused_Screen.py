@@ -25,8 +25,6 @@ def paused_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.MAIN
                 if event.key == pygame.K_SPACE:
                     return gv.paused_from
-                if event.key == pygame.K_x:
-                    coins.change_coins(100)
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if weiter_text_rect.collidepoint(event.pos):
                     return gv.paused_from
