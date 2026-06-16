@@ -5,14 +5,15 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Uhr import Uhr
 from objects.Coins import Coins
+from objects.Screens.Object import Object
+
+
 
 def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
-    gv.current_screen = "gang1"
     frame_counter = 0
-    uhr = Uhr(screen)
-    coins = Coins(screen)
+
     # Spieler initialisieren
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
     player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
@@ -28,6 +29,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
     groesse_gang = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_gang) for img in orginal_gang]
 
+    Test_object = Object("../assats/Bilder/Test_object.png", 100, screen, 50, 50, pygame.Rect(0, 0, 128, 128), 1, 1, 1)
     #tür positionen wurden mithilfe gemini berechnet
     door1_rect = pygame.Rect(gv.SCREEN_WIDTH * 0.23, gv.SCREEN_HIGHT * 0.40, gv.SCREEN_WIDTH * 0.07,
                              gv.SCREEN_HIGHT * 0.35)  # Tür Links
@@ -39,17 +41,24 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
                              gv.SCREEN_HIGHT * 0.35)  # Tür Rechts
     exit_rect = pygame.Rect(0, gv.SCREEN_HIGHT-100, gv.SCREEN_WIDTH, 10)
 
+    # ... (Dein Code davor)
+
     while True:
         frame_counter += 1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return GameScreens.EXIT
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    gv.paused_from = GameScreens.GANG1
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Test_object.rect.collidepoint(event.pos):
+                    Test_object.geklaut = True
+
 
         screen.fill("black")
         raum.draw(screen, 0, 0, frame_counter)
@@ -72,6 +81,8 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         elif player_rect.colliderect(exit_rect):
             return GameScreens.PLAY
 
+        Test_object.update_and_draw()
+
         #hittboxen für türen zeichnen
         # pygame.draw.rect(screen, "red", door1_rect, 2)
         # pygame.draw.rect(screen, "blue", door2_rect, 2)
@@ -80,7 +91,6 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         # pygame.draw.rect(screen, "white", player_rect, 2)
         # pygame.draw.rect(screen, "red", exit_rect)
 
-        uhr.uhr_update()
-        coins.show_coins()
+
         pygame.display.flip()
         clock.tick(gv.FPS)
