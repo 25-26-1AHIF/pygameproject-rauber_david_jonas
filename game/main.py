@@ -19,7 +19,7 @@ from objects.Screens.Mode_Screen import mode_screen
 from objects.Screens.Gang_1 import Gang_1
 from objects.save_game import load_game,reset_game
 from objects.Screens.Wohnwagen import Wohnwagen
-
+from objects.Screens.shop_Screen import shop_screen
 
 def main():
     gv.init()
@@ -81,6 +81,8 @@ def main():
             GameScreens.actual = Gang_1(screen, clock)
         elif GameScreens.actual == GameScreens.WAGEN:
             GameScreens.actual = Wohnwagen(screen, clock)
+        elif GameScreens.actual == GameScreens.SHOP:
+            GameScreens.actual = shop_screen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
     reset_game()
@@ -88,3 +90,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

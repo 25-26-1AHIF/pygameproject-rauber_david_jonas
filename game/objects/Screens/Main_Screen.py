@@ -15,6 +15,12 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     starten_text_rect = starten_text.get_rect(center=(gv.SCREEN_WIDTH / 2 / 2, 250))
     exit_text_rect = exit_text.get_rect(center=(gv.SCREEN_WIDTH / 2 / 2, 450))
     str_text_rect = str_text.get_rect(center=(gv.SCREEN_WIDTH / 2 / 2, 350))
+    spiel_laden_text = gv.FONT_MIDDLE.render("Spiel laden", True, "white")
+    spiel_laden_text_rect = spiel_laden_text.get_rect(center=(gv.SCREEN_WIDTH/ 2 + 150, 250))
+    scores_text = gv.FONT_MIDDLE.render("Scores", True, "white")
+    scores_text_rect = scores_text.get_rect(center=(gv.SCREEN_WIDTH/ 2 + 150, 350))
+    shop_text = gv.FONT_MIDDLE.render("Shop", True, "white")
+    shop_text_rect = shop_text.get_rect(center=(gv.SCREEN_WIDTH/ 2 + 150, 450))
 
     Geldsack = Bilder("../assats/Bilder/Geldsack.png", 1, pygame.Rect(0, 0, 128, 128), 1)
     Hintergrund = Bilder("../assats/Bilder/Hintergrund.png", 16, pygame.Rect(0, 0, 1024, 1024), 10)
@@ -41,14 +47,21 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.EXIT
                 if str_text_rect.collidepoint(event.pos):
                     return GameScreens.STR
-
+                if spiel_laden_text_rect.collidepoint(event.pos):
+                    #gv.spiel_laden = True
+                    return GameScreens.ANIMATION
+                if shop_text_rect.collidepoint(event.pos):
+                    return GameScreens.SHOP
         Hintergrund.draw(screen, 0, 0, frame_counter)
         screen.blit(titel_text, titel_text_rect)
         Geldsack.draw(screen, gv.SCREEN_WIDTH / 2 - groesse[0] / 2, gv.SCREEN_HIGHT / 2 - groesse[1] / 2 + 10, frame_counter)
         screen.blit(starten_text, starten_text_rect)
         screen.blit(str_text, str_text_rect)
         screen.blit(exit_text, exit_text_rect)
-
+        screen.blit(spiel_laden_text, spiel_laden_text_rect)
+        screen.blit(scores_text, scores_text_rect)
+        screen.blit(shop_text, shop_text_rect)
         frame_counter += 1
         pygame.display.flip()
         clock.tick(gv.FPS)
+

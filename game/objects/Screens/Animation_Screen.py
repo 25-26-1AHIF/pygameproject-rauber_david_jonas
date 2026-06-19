@@ -2,6 +2,7 @@ import pygame
 from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
+from objects.save_game import load_game,reset_game
 
 def animation_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Animation")
@@ -25,7 +26,7 @@ def animation_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             if event.type == pygame.QUIT:
                 return GameScreens.EXIT
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                return GameScreens.EXIT
+                return GameScreens.MAIN
 
         screen.fill("black")
         Hintergrund.draw(screen, 0, 0, frame_counter)

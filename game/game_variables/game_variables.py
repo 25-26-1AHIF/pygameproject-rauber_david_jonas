@@ -8,6 +8,7 @@ class GameVariables:
     player_v = 5
 
     wohnwagen: bool = False
+    #spiel_laden: bool = False
 
     coins = 0
     player_x = SCREEN_HIGHT / 2 - player_size / 2
@@ -51,4 +52,5 @@ class GameScreens:
     RIDDLE2 = ("riddle2")
     GANG1 = ("Gang_1")
     WAGEN = ("WAGEN")
+    SHOP = ("shop")
     actual = MAIN
