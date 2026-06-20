@@ -26,8 +26,8 @@ class GameVariables:
     FONT_MIDDLE: pygame.font.Font = None
     FONT_SMALL: pygame.font.Font = None
 
-    Test_object_geklaut = False
-    Test_object_auszahlung = False
+    #Test_object_geklaut = False
+    #Test_object_auszahlung = False
 
     @staticmethod
     def init():

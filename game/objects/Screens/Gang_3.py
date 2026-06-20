@@ -31,7 +31,7 @@ def Gang_3(screen: pygame.Surface, clock: pygame.time.Clock):
 
     raum.images = [pygame.transform.smoothscale(img, groesse_gang) for img in orginal_gang]
 
-    Test_object = Object("../assats/Bilder/Test_object.png", 100, screen, 50, 50, pygame.Rect(0, 0, 128, 128), 1, 1, 1, gv.Test_object_geklaut, gv.Test_object_auszahlung)
+    #Test_object = Object("../assats/Bilder/Test_object.png", 100, screen, 50, 50, pygame.Rect(0, 0, 128, 128), 1, 1, 1, gv.Test_object_geklaut, gv.Test_object_auszahlung)
 
 
 
@@ -60,11 +60,11 @@ def Gang_3(screen: pygame.Surface, clock: pygame.time.Clock):
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if Test_object.rect.collidepoint(event.pos):
-                    Test_object.geklaut = True
-                    gv.Test_object_geklaut = True
-                    gv.Test_object_auszahlung = True
+            #if event.type == pygame.MOUSEBUTTONDOWN:
+                #if Test_object.rect.collidepoint(event.pos):
+                    #Test_object.geklaut = True
+                    #gv.Test_object_geklaut = True
+                    #gv.Test_object_auszahlung = True
 
 
         screen.fill("black")
@@ -88,7 +88,7 @@ def Gang_3(screen: pygame.Surface, clock: pygame.time.Clock):
         elif player_rect.colliderect(exit_rect):
             return GameScreens.PLAY
 
-        Test_object.update_and_draw()
+        #Test_object.update_and_draw()
 
         #hittboxen für türen zeichnen
         # pygame.draw.rect(screen, "red", door1_rect, 2)
