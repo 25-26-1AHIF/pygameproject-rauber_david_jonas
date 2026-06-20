@@ -117,6 +117,9 @@ def riddle2_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     elif gv.haus_2 == True:
                         gv.haus_2 = False
                         return GameScreens.GANG2
+                    elif gv.haus_3 == True:
+                        gv.haus_3 = False
+                        return GameScreens.GANG3
                     else:
                         return GameScreens.GANG1
 

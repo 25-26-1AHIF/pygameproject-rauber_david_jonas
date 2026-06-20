@@ -79,6 +79,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                                          GameScreens.RIDDLE5])
 
                 elif tuer_4_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    gv.haus_3 = True
                     return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
                                          GameScreens.RIDDLE3, GameScreens.RIDDLE4,
                                          GameScreens.RIDDLE5])
