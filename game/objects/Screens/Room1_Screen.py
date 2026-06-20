@@ -5,6 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Uhr import Uhr
 from objects.Coins import Coins
+from objects.Screens.Object import Object
 
 def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -26,6 +27,12 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
+    Jonas = Object("../assats/Bilder/Jonas_Bilderrahmen.png", 50, screen, 180, gv.SCREEN_WIDTH/2-37, pygame.Rect(0, 0, 150, 200), 1, 5, 1,gv.Jonas_geklaut, gv.Jonas_auszahlung)
+    Jonas.sprite.load_spritesheet()
+    orginal_Jonas = Jonas.sprite.images
+    groesse_Jonas = (75, 100)
+    Jonas.sprite.images = [pygame.transform.smoothscale(img, groesse_Jonas) for img in orginal_Jonas]
+
 
 
 
@@ -40,6 +47,11 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Jonas.rect.collidepoint(event.pos):
+                    Jonas.geklaut = True
+                    gv.Jonas_geklaut = True
+                    gv.Jonas_auszahlung = True
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
@@ -48,6 +60,8 @@ def room1_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         if player.player_x_pos > gv.SCREEN_WIDTH - 60:
             return GameScreens.GANG1
+
+        Jonas.update_and_draw()
 
         uhr.uhr_update()
         coins.show_coins()

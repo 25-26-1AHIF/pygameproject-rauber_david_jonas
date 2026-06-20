@@ -22,7 +22,10 @@ class Object:
 
 
     def update_and_draw(self):
+        self.rect.x = self.xpos
+        self.rect.y = self.ypos
         if self.geklaut == False:
+            self.framecounter += 1
             self.sprite.draw(self.screen, self.xpos, self.ypos, self.framecounter)
 
         elif self.geklaut == True and self.Auszahlung == False:

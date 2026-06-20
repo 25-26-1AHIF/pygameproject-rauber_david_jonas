@@ -5,6 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Uhr import Uhr
 from objects.Coins import Coins
+from objects.Screens.Object import Object
 
 def room4_2(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -27,6 +28,11 @@ def room4_2(screen: pygame.Surface, clock: pygame.time.Clock):
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
+    Wein = Object("../assats/Bilder/Weinflasche.png", 200, screen, 300, 260, pygame.Rect(0, 0, 150, 200), 1, 5, 1,gv.Baer_geklaut, gv.Baer_auszahlung)
+    Wein.sprite.load_spritesheet()
+    orginal_Wein = Wein.sprite.images
+    groesse_Wein = (75, 100)
+    Wein.sprite.images = [pygame.transform.smoothscale(img, groesse_Wein) for img in orginal_Wein]
 
 
 
@@ -41,6 +47,11 @@ def room4_2(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Wein.rect.collidepoint(event.pos):
+                    Wein.geklaut = True
+                    gv.Wein_geklaut = True
+                    gv.Wein_auszahlung = True
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
@@ -48,6 +59,7 @@ def room4_2(screen: pygame.Surface, clock: pygame.time.Clock):
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
         if player.player_x_pos < 60:
             return GameScreens.GANG2
+        Wein.update_and_draw()
         uhr.uhr_update()
         coins.show_coins()
         pygame.display.flip()

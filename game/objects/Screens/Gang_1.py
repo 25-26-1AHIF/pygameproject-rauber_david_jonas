@@ -41,7 +41,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
                              gv.SCREEN_HIGHT * 0.35)  # Tür Rechts
     exit_rect = pygame.Rect(0, gv.SCREEN_HIGHT-100, gv.SCREEN_WIDTH, 10)
 
-    # ... (Dein Code davor)
+
 
     while True:
         frame_counter += 1

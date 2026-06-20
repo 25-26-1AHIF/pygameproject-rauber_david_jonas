@@ -28,6 +28,14 @@ class GameVariables:
 
     #Test_object_geklaut = False
     #Test_object_auszahlung = False
+    Pc_geklaut = False
+    Pc_auszahlung = False
+    Jonas_geklaut = False
+    Jonas_auszahlung = False
+    Wein_geklaut = False
+    Wein_auszahlung = False
+    Baer_geklaut = False
+    Baer_auszahlung = False
 
     @staticmethod
     def init():
