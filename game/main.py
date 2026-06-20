@@ -17,9 +17,15 @@ from objects.Screens.riddle4_Screen import riddle4_screen
 from objects.Screens.riddle5_Screen import riddle5_screen
 from objects.Screens.Mode_Screen import mode_screen
 from objects.Screens.Gang_1 import Gang_1
-from objects.save_game import load_game,reset_game
+from objects.Screens.Gang_2 import Gang_2
+from objects.save_game import load_game, reset_game
 from objects.Screens.Wohnwagen import Wohnwagen
 from objects.Screens.shop_Screen import shop_screen
+from objects.Screens.room_1_2 import room1_2
+from objects.Screens.room_2_2 import room2_2
+from objects.Screens.room_3_2 import room3_2
+from objects.Screens.room_4_2 import room4_2
+
 
 def main():
     gv.init()
@@ -37,12 +43,22 @@ def main():
         GameScreens.actual = GameScreens.ROOM_3
     elif gv.current_screen == "room4":
         GameScreens.actual = GameScreens.ROOM_4
+    elif gv.current_screen == "room1_2":
+        GameScreens.actual = GameScreens.ROOM_1_2
+    elif gv.current_screen == "room2_2":
+        GameScreens.actual = GameScreens.ROOM_2_2
+    elif gv.current_screen == "room3_2":
+        GameScreens.actual = GameScreens.ROOM_3_2
+    elif gv.current_screen == "room4_2":
+        GameScreens.actual = GameScreens.ROOM_4_2
     elif gv.current_screen == "riddle1":
         GameScreens.actual = GameScreens.RIDDLE1
     elif gv.current_screen == "riddle2":
         GameScreens.actual = GameScreens.RIDDLE2
     elif gv.current_screen == "gang1":
         GameScreens.actual = GameScreens.GANG1
+    elif gv.current_screen == "gang2":
+        GameScreens.actual = GameScreens.GANG2
     elif gv.current_screen == "wohnwagen":
         GameScreens.actual = GameScreens.WAGEN
 
@@ -65,6 +81,14 @@ def main():
             GameScreens.actual = room3_screen(screen, clock)
         elif GameScreens.actual == GameScreens.ROOM_4:
             GameScreens.actual = room4_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_1_2:
+            GameScreens.actual = room1_2(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_2_2:
+            GameScreens.actual = room2_2(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_3_2:
+            GameScreens.actual = room3_2(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_4_2:
+            GameScreens.actual = room4_2(screen, clock)
         elif GameScreens.actual == GameScreens.MODE:
             GameScreens.actual = mode_screen(screen, clock)
         elif GameScreens.actual == GameScreens.RIDDLE1:
@@ -79,15 +103,18 @@ def main():
             GameScreens.actual = riddle5_screen(screen, clock)
         elif GameScreens.actual == GameScreens.GANG1:
             GameScreens.actual = Gang_1(screen, clock)
+        elif GameScreens.actual == GameScreens.GANG2:
+            GameScreens.actual = Gang_2(screen, clock)
         elif GameScreens.actual == GameScreens.WAGEN:
             GameScreens.actual = Wohnwagen(screen, clock)
         elif GameScreens.actual == GameScreens.SHOP:
             GameScreens.actual = shop_screen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
+
     reset_game()
     pygame.quit()
 
+
 if __name__ == "__main__":
     main()
-

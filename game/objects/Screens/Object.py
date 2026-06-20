@@ -5,8 +5,8 @@ from game_variables.game_variables import GameVariables as gv
 
 
 class Object:
-    def __init__(self, path: str, wert: int, screen: pygame.Surface , ypos: int, xpos: int, rect: pygame.rect, imagecount: int, animationspeed: int, framecounter:int):
-        self.geklaut: bool = False
+    def __init__(self, path: str, wert: int, screen: pygame.Surface , ypos: int, xpos: int, rect: pygame.rect, imagecount: int, animationspeed: int, framecounter:int, geklaut:bool, auszahlung:bool):
+        self.geklaut: bool = geklaut
         self.path = path
         self.rect = rect
         self.imagecount = imagecount
@@ -18,7 +18,7 @@ class Object:
         self.ypos = ypos
         self.framecounter = framecounter
         self.wert: int = wert
-        self.Auszahlung = False
+        self.Auszahlung = auszahlung
 
 
     def update_and_draw(self):

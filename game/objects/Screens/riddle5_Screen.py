@@ -21,6 +21,9 @@ def riddle5_screen(screen, clock):
                     if gv.wohnwagen == True:
                         gv.wohnwagen = False
                         return GameScreens.WAGEN
+                    elif gv.haus_2 == True:
+                        gv.haus_2 = False
+                        return GameScreens.GANG2
                     else:
                         return GameScreens.GANG1
 

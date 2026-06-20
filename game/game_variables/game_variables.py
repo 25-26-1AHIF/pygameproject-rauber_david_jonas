@@ -8,6 +8,7 @@ class GameVariables:
     player_v = 5
 
     wohnwagen: bool = False
+    haus_2: bool = False
     #spiel_laden: bool = False
 
     coins = 0
@@ -23,6 +24,9 @@ class GameVariables:
     FONT_BIG: pygame.font.Font = None
     FONT_MIDDLE: pygame.font.Font = None
     FONT_SMALL: pygame.font.Font = None
+
+    Test_object_geklaut = False
+    Test_object_auszahlung = False
 
     @staticmethod
     def init():
@@ -51,6 +55,11 @@ class GameScreens:
     RIDDLE1 = ("riddle1")
     RIDDLE2 = ("riddle2")
     GANG1 = ("Gang_1")
+    GANG2 = ("Gang_2")
     WAGEN = ("WAGEN")
     SHOP = ("shop")
+    ROOM_1_2 = ("room1_2")
+    ROOM_2_2 = ("room2_2")
+    ROOM_3_2 = ("room3_2")
+    ROOM_4_2 = ("room4_2")
     actual = MAIN
