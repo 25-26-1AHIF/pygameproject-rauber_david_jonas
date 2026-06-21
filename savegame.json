@@ -1,0 +1,14 @@
+{
+    "spielstand": {
+        "coins": 0,
+        "player_x": 400.0,
+        "player_y": 500,
+        "screen": "play",
+        "background_x": 1,
+        "stunden": 0,
+        "sekunden": 0,
+        "skin_standing": "basic",
+        "skin_moving": "basic"
+    },
+    "scores": []
+}

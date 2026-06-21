@@ -31,6 +31,23 @@ class GameVariables:
     FONT_MIDDLE: pygame.font.Font = None
     FONT_SMALL: pygame.font.Font = None
 
+    #Test_object_geklaut = False
+    #Test_object_auszahlung = False
+    Pc_geklaut = False
+    Pc_auszahlung = False
+    Jonas_geklaut = False
+    Jonas_auszahlung = False
+    Wein_geklaut = False
+    Wein_auszahlung = False
+    Baer_geklaut = False
+    Baer_auszahlung = False
+    Truthahn_geklaut = False
+    Truthahn_auszahlung = False
+    Fahrrad_geklaut = False
+    Fahrrad_auszahlung = False
+    Fernseher_geklaut = False
+    Fernseher_auszahlung = False
+
     @staticmethod
     def init():
         pygame.init()
@@ -58,7 +75,17 @@ class GameScreens:
     RIDDLE1 = ("riddle1")
     RIDDLE2 = ("riddle2")
     GANG1 = ("Gang_1")
+    GANG2 = ("Gang_2")
+    GANG3 = ("Gang_3")
     WAGEN = ("WAGEN")
     SHOP = ("shop")
+    ROOM_1_2 = ("room1_2")
+    ROOM_2_2 = ("room2_2")
+    ROOM_3_2 = ("room3_2")
+    ROOM_4_2 = ("room4_2")
+    ROOM_1_3 = ("room1_3")
+    ROOM_2_3 = ("room2_3")
+    ROOM_3_3 = ("room3_3")
+    ROOM_4_3 = ("room4_3")
     SCORES = ("scores")
     actual = MAIN
