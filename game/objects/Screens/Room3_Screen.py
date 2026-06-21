@@ -54,8 +54,8 @@ def room3_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     gv.Baer_auszahlung = True
 
         screen.fill("black")
-        Baer.update_and_draw()
         raum.draw(screen, 0,0,frame_counter)
+        Baer.update_and_draw()
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
         if player.player_x_pos < 60:

@@ -5,6 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Uhr import Uhr
 from objects.Coins import Coins
+from objects.Screens.Object import Object
 
 def room1_3(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -26,6 +27,11 @@ def room1_3(screen: pygame.Surface, clock: pygame.time.Clock):
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
+    Fernseher = Object("../assats/Bilder/Fernseher.png", 750, screen, 220, gv.SCREEN_WIDTH-150, pygame.Rect(0, 0, 1024, 1024), 1, 5, 1,gv.Fahrrad_geklaut, gv.Fahrrad_auszahlung)
+    Fernseher.sprite.load_spritesheet()
+    orginal_Fernseher = Fernseher.sprite.images
+    groesse_Fernseher = (300, 300)
+    Fernseher.sprite.images = [pygame.transform.smoothscale(img, groesse_Fernseher) for img in orginal_Fernseher]
 
 
 
@@ -40,9 +46,15 @@ def room1_3(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Fernseher.rect.collidepoint(event.pos):
+                    Fernseher.geklaut = True
+                    gv.Fernseher_geklaut = True
+                    gv.Fernseher_auszahlung = True
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
+        Fernseher.update_and_draw()
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
 

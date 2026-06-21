@@ -36,6 +36,12 @@ class GameVariables:
     Wein_auszahlung = False
     Baer_geklaut = False
     Baer_auszahlung = False
+    Truthahn_geklaut = False
+    Truthahn_auszahlung = False
+    Fahrrad_geklaut = False
+    Fahrrad_auszahlung = False
+    Fernseher_geklaut = False
+    Fernseher_auszahlung = False
 
     @staticmethod
     def init():

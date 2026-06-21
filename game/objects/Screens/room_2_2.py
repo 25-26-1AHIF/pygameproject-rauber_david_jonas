@@ -5,6 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Uhr import Uhr
 from objects.Coins import Coins
+from objects.Screens.Object import Object
 
 def room2_2(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -26,6 +27,11 @@ def room2_2(screen: pygame.Surface, clock: pygame.time.Clock):
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
+    Truthahn = Object("../assats/Bilder/Truthahn.png", 50, screen, 300, gv.SCREEN_WIDTH/2-37, pygame.Rect(0, 0, 1024, 1024), 1, 5, 1,gv.Truthahn_geklaut, gv.Truthahn_auszahlung)
+    Truthahn.sprite.load_spritesheet()
+    orginal_Truthahn = Truthahn.sprite.images
+    groesse_Truthahn = (100, 100)
+    Truthahn.sprite.images = [pygame.transform.smoothscale(img, groesse_Truthahn) for img in orginal_Truthahn]
 
 
 
@@ -40,9 +46,15 @@ def room2_2(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Truthahn.rect.collidepoint(event.pos):
+                    Truthahn.geklaut = True
+                    gv.Truthahn_geklaut = True
+                    gv.Truthahn_auszahlung = True
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
+        Truthahn.update_and_draw()
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
         if player.player_x_pos > gv.SCREEN_WIDTH - 60:

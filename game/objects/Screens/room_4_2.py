@@ -28,7 +28,7 @@ def room4_2(screen: pygame.Surface, clock: pygame.time.Clock):
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
-    Wein = Object("../assats/Bilder/Weinflasche.png", 200, screen, 300, 260, pygame.Rect(0, 0, 150, 200), 1, 5, 1,gv.Baer_geklaut, gv.Baer_auszahlung)
+    Wein = Object("../assats/Bilder/Weinflasche.png", 200, screen, 300, 260, pygame.Rect(0, 0, 150, 200), 1, 5, 1,gv.Wein_geklaut, gv.Wein_auszahlung)
     Wein.sprite.load_spritesheet()
     orginal_Wein = Wein.sprite.images
     groesse_Wein = (75, 100)
