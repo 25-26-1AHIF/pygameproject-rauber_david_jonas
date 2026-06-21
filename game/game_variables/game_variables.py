@@ -10,6 +10,13 @@ class GameVariables:
     wohnwagen: bool = False
     #spiel_laden: bool = False
 
+    blue_skin_gekauft = False
+    red_skin_gekauft = False
+    green_skin_gekauft = False
+    rainbow_skin_gekauft = False
+    aktueller_skin_standing = "basic"
+    aktueller_skin_moving = "basic"
+
     coins = 0
     player_x = SCREEN_HIGHT / 2 - player_size / 2
     player_y = SCREEN_HIGHT - player_size - 10
@@ -53,4 +60,5 @@ class GameScreens:
     GANG1 = ("Gang_1")
     WAGEN = ("WAGEN")
     SHOP = ("shop")
+    SCORES = ("scores")
     actual = MAIN

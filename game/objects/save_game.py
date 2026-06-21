@@ -2,46 +2,96 @@ import json
 from game_variables.game_variables import GameVariables as gv
 
 def save_game():
+    altes_dict = load_entire_file()
+    aktuelle_scores = altes_dict["scores"]
 
-    daten = {
-    "coins": gv.coins,
-    "player_x": gv.player_x,
-    "player_y": gv.player_y,
-    "screen": gv.current_screen,
-    "stunden": gv.stunden,
-    "sekunden": gv.sekunden,
-    "background_x": gv.background_x
-}
-
-    with open("savegame.json", "w") as datei:
-        json.dump(daten, datei)
-
-def reset_game():
-    daten = {
-        "coins": 0,
-        "player_x": gv.SCREEN_WIDTH / 2,
-        "player_y": gv.SCREEN_HIGHT - 100,
-        "screen": "main",
-        "stunden": 0,
-        "sekunden": 0
+    spielstand = {
+        "coins": gv.coins,
+        "player_x": gv.player_x,
+        "player_y": gv.player_y,
+        "screen": gv.current_screen,
+        "background_x": gv.background_x,
+        "stunden": gv.stunden,
+        "sekunden": gv.sekunden,
+        "skin_standing": gv.aktueller_skin_standing,
+        "skin_moving": gv.aktueller_skin_moving
     }
 
-    with open("savegame.json", "w") as datei:
-        json.dump(daten, datei)
+    haupt_daten = {
+        "spielstand": spielstand,
+        "scores": aktuelle_scores
+    }
+
+    datei = open("../savegame.json", "w")
+    json.dump(haupt_daten, datei, indent=4)
+    datei.close()
 
 def load_game():
     try:
+        haupt_daten = load_entire_file()
+        spielstand = haupt_daten["spielstand"]
 
-        with open("savegame.json", "r") as datei:
-            daten = json.load(datei)
-
-        gv.coins = daten["coins"]
-        gv.player_x = daten["player_x"]
-        gv.player_y = daten["player_y"]
-        gv.current_screen = daten["screen"]
-        gv.background_x = daten["background_x"]
-        gv.stunden = daten["stunde"]
-        gv.sekunden = daten["sekundnen"]
-
+        gv.coins = spielstand["coins"]
+        gv.player_x = spielstand["player_x"]
+        gv.player_y = spielstand["player_y"]
+        gv.current_screen = spielstand["screen"]
+        gv.background_x = spielstand["background_x"]
+        gv.stunden = spielstand["stunden"]
+        gv.sekunden = spielstand["sekunden"]
+        gv.aktueller_skin_standing = spielstand["skin_standing"]
+        gv.aktueller_skin_moving = spielstand["skin_moving"]
     except:
         pass
+
+
+def check_and_save_score():
+    haupt_daten = load_entire_file()
+    scores = haupt_daten["scores"]
+
+    meine_zeit = (gv.stunden * 3600) + gv.sekunden
+
+    if meine_zeit == 0:
+        return
+
+    lauf_daten = {
+        "zeit": meine_zeit,
+        "coins": gv.coins
+    }
+
+    scores.append(lauf_daten)
+
+    for i in range(len(scores)):
+        for j in range(i + 1, len(scores)):
+            if scores[i]["zeit"] > scores[j]["zeit"]:
+                temporaer = scores[i]
+                scores[i] = scores[j]
+                scores[j] = temporaer
+
+    if len(scores) > 3:
+        scores = scores[0:3]
+
+    haupt_daten["scores"] = scores
+    datei = open("../savegame.json", "w")
+    json.dump(haupt_daten, datei, indent=4)
+    datei.close()
+
+def reset_game():
+    check_and_save_score()
+
+    gv.coins = 0
+    gv.stunden = 0
+    gv.sekunden = 0
+    gv.player_x = gv.SCREEN_WIDTH / 2
+    gv.player_y = gv.SCREEN_HIGHT - 100
+    gv.background_x = 1
+    gv.current_screen = "play"
+    save_game()
+
+def load_entire_file():
+    try:
+        datei = open("../savegame.json", "r")
+        daten = json.load(datei)
+        datei.close()
+        return daten
+    except:
+        return {"spielstand": {}, "scores": []}

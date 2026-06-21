@@ -2,6 +2,7 @@ import pygame
 from game_variables.game_variables import GameVariables as gv
 from game_variables.game_variables import GameScreens as GameScreens
 from objects.sprites import Bilder
+from objects.save_game import load_game, reset_game
 
 def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Main Screen")
@@ -41,17 +42,38 @@ def main_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 return GameScreens.EXIT
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                if starten_text_rect.collidepoint(event.pos):
-                    return GameScreens.ANIMATION
-                if exit_text_rect.collidepoint(event.pos):
-                    return GameScreens.EXIT
-                if str_text_rect.collidepoint(event.pos):
-                    return GameScreens.STR
-                if spiel_laden_text_rect.collidepoint(event.pos):
-                    #gv.spiel_laden = True
-                    return GameScreens.ANIMATION
-                if shop_text_rect.collidepoint(event.pos):
-                    return GameScreens.SHOP
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    if starten_text_rect.collidepoint(event.pos):
+                        reset_game()
+                        return GameScreens.ANIMATION
+
+                    if exit_text_rect.collidepoint(event.pos):
+                        return GameScreens.EXIT
+                    if str_text_rect.collidepoint(event.pos):
+                        return GameScreens.STR
+                    if spiel_laden_text_rect.collidepoint(event.pos):
+                        load_game()
+                        if gv.current_screen == "play":
+                            return GameScreens.PLAY
+                        elif gv.current_screen == "room1":
+                            return GameScreens.ROOM_1
+                        elif gv.current_screen == "room2":
+                            return GameScreens.ROOM_2
+                        elif gv.current_screen == "room3":
+                            return GameScreens.ROOM_3
+                        elif gv.current_screen == "room4":
+                            return GameScreens.ROOM_4
+                        elif gv.current_screen == "gang1":
+                            return GameScreens.GANG1
+                        elif gv.current_screen == "wohnwagen":
+                            return GameScreens.WAGEN
+                        else:
+                            return GameScreens.PLAY
+                    if shop_text_rect.collidepoint(event.pos):
+                        return GameScreens.SHOP
+                    if scores_text_rect.collidepoint(event.pos):
+                        return GameScreens.SCORES
+
         Hintergrund.draw(screen, 0, 0, frame_counter)
         screen.blit(titel_text, titel_text_rect)
         Geldsack.draw(screen, gv.SCREEN_WIDTH / 2 - groesse[0] / 2, gv.SCREEN_HIGHT / 2 - groesse[1] / 2 + 10, frame_counter)

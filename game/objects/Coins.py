@@ -10,7 +10,7 @@ class Coins:
 
     def show_coins(self):
         coins_text = gv.FONT_MIDDLE.render(f"Coins: {gv.coins}",True,
-                                           "white")
+                                           "yellow")
         coins_rect = coins_text.get_rect(center=(gv.SCREEN_WIDTH - 100, 50))
         self.screen.blit(coins_text, coins_rect)
     def change_coins(self, change):

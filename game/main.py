@@ -20,31 +20,13 @@ from objects.Screens.Gang_1 import Gang_1
 from objects.save_game import load_game,reset_game
 from objects.Screens.Wohnwagen import Wohnwagen
 from objects.Screens.shop_Screen import shop_screen
+from objects.Screens.scores_Screen import scores_screen
 
 def main():
     gv.init()
-    load_game()
     screen = pygame.display.set_mode((gv.SCREEN_WIDTH, gv.SCREEN_HIGHT))
     clock = pygame.time.Clock()
-
-    if gv.current_screen == "play":
-        GameScreens.actual = GameScreens.PLAY
-    elif gv.current_screen == "room1":
-        GameScreens.actual = GameScreens.ROOM_1
-    elif gv.current_screen == "room2":
-        GameScreens.actual = GameScreens.ROOM_2
-    elif gv.current_screen == "room3":
-        GameScreens.actual = GameScreens.ROOM_3
-    elif gv.current_screen == "room4":
-        GameScreens.actual = GameScreens.ROOM_4
-    elif gv.current_screen == "riddle1":
-        GameScreens.actual = GameScreens.RIDDLE1
-    elif gv.current_screen == "riddle2":
-        GameScreens.actual = GameScreens.RIDDLE2
-    elif gv.current_screen == "gang1":
-        GameScreens.actual = GameScreens.GANG1
-    elif gv.current_screen == "wohnwagen":
-        GameScreens.actual = GameScreens.WAGEN
+    GameScreens.actual = GameScreens.MAIN
 
     while True:
         if GameScreens.actual == GameScreens.MAIN:
@@ -83,11 +65,11 @@ def main():
             GameScreens.actual = Wohnwagen(screen, clock)
         elif GameScreens.actual == GameScreens.SHOP:
             GameScreens.actual = shop_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.SCORES:
+            GameScreens.actual = scores_screen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
-    reset_game()
     pygame.quit()
 
 if __name__ == "__main__":
     main()
-
