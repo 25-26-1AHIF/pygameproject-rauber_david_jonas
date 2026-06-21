@@ -9,12 +9,12 @@ from objects.Screens.Object import Object
 
 
 
-def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
+def Gang_2(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
     frame_counter = 0
 
-    # Spieler initialisieren
+
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
     player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
     player = Player(
@@ -27,9 +27,14 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
     raum.load_spritesheet()
     orginal_gang = raum.images
     groesse_gang = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
+
+
     raum.images = [pygame.transform.smoothscale(img, groesse_gang) for img in orginal_gang]
 
     #Test_object = Object("../assats/Bilder/Test_object.png", 100, screen, 50, 50, pygame.Rect(0, 0, 128, 128), 1, 1, 1, gv.Test_object_geklaut, gv.Test_object_auszahlung)
+
+
+
     #tür positionen wurden mithilfe gemini berechnet
     door1_rect = pygame.Rect(gv.SCREEN_WIDTH * 0.23, gv.SCREEN_HIGHT * 0.40, gv.SCREEN_WIDTH * 0.07,
                              gv.SCREEN_HIGHT * 0.35)  # Tür Links
@@ -73,13 +78,13 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
         if player_rect.colliderect(door1_rect):
-            return GameScreens.ROOM_1
+            return GameScreens.ROOM_1_2
         elif player_rect.colliderect(door2_rect):
-            return GameScreens.ROOM_2
+            return GameScreens.ROOM_2_2
         elif player_rect.colliderect(door3_rect):
-            return GameScreens.ROOM_3
+            return GameScreens.ROOM_3_2
         elif player_rect.colliderect(door4_rect):
-            return GameScreens.ROOM_4
+            return GameScreens.ROOM_4_2
         elif player_rect.colliderect(exit_rect):
             return GameScreens.PLAY
 

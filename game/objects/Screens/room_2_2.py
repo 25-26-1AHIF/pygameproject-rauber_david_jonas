@@ -7,13 +7,13 @@ from objects.Uhr import Uhr
 from objects.Coins import Coins
 from objects.Screens.Object import Object
 
-def room3_screen(screen: pygame.Surface, clock: pygame.time.Clock):
+def room2_2(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("Room_1 Screen")
-    gv.current_screen = "room3"
+    gv.current_screen = "room2"
+    frame_counter = 0
     uhr = Uhr(screen)
     coins = Coins(screen)
-    frame_counter = 0
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
     player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
     player = Player(
@@ -22,17 +22,16 @@ def room3_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         player_y_pos=player_y_pos
     )
 
-
-    raum = Bilder("../assats/Bilder/Rooms/Schlafzimmer_1.png", 1,pygame.Rect(0, 0, 1024, 1024),80)
+    raum = Bilder("../assats/Bilder/Rooms/Haus_2.png", 1, pygame.Rect(3072, 0, 1024, 1024), 20)
     raum.load_spritesheet()
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
-    Baer = Object("../assats/Bilder/Baer.png", 50, screen, 150, gv.SCREEN_WIDTH/2 , pygame.Rect(0, 0, 300, 300), 1, 5, 1,gv.Baer_geklaut, gv.Baer_auszahlung)
-    Baer.sprite.load_spritesheet()
-    orginal_Baer = Baer.sprite.images
-    groesse_Baer = (250, 300)
-    Baer.sprite.images = [pygame.transform.smoothscale(img, groesse_Baer) for img in orginal_Baer]
+    Truthahn = Object("../assats/Bilder/Truthahn.png", 50, screen, 300, gv.SCREEN_WIDTH/2-37, pygame.Rect(0, 0, 1024, 1024), 1, 5, 1,gv.Truthahn_geklaut, gv.Truthahn_auszahlung)
+    Truthahn.sprite.load_spritesheet()
+    orginal_Truthahn = Truthahn.sprite.images
+    groesse_Truthahn = (100, 100)
+    Truthahn.sprite.images = [pygame.transform.smoothscale(img, groesse_Truthahn) for img in orginal_Truthahn]
 
 
 
@@ -43,24 +42,23 @@ def room3_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 return GameScreens.EXIT
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    gv.paused_from = GameScreens.ROOM_3
+                    gv.paused_from = GameScreens.ROOM_2
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if Baer.rect.collidepoint(event.pos):
-                    Baer.geklaut = True
-                    gv.Baer_geklaut = True
-                    gv.Baer_auszahlung = True
+                if Truthahn.rect.collidepoint(event.pos):
+                    Truthahn.geklaut = True
+                    gv.Truthahn_geklaut = True
+                    gv.Truthahn_auszahlung = True
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
-        Baer.update_and_draw()
+        Truthahn.update_and_draw()
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
-        if player.player_x_pos < 60:
-            return GameScreens.GANG1
-
+        if player.player_x_pos > gv.SCREEN_WIDTH - 60:
+            return GameScreens.GANG2
         uhr.uhr_update()
         coins.show_coins()
         pygame.display.flip()

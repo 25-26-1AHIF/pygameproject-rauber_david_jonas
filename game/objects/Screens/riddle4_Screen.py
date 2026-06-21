@@ -59,6 +59,12 @@ def riddle4_screen(screen, clock):
             if gv.wohnwagen == True:
                 gv.wohnwagen = False
                 return GameScreens.WAGEN
+            elif gv.haus_2 == True:
+                gv.haus_2 = False
+                return GameScreens.GANG2
+            elif gv.haus_3 == True:
+                gv.haus_3 = False
+                return GameScreens.GANG3
             else:
                 return GameScreens.GANG1
 

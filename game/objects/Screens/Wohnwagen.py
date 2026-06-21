@@ -5,6 +5,7 @@ from objects.sprites import Bilder
 from objects.player import Player
 from objects.Uhr import Uhr
 from objects.Coins import Coins
+from objects.Screens.Object import Object
 
 
 def Wohnwagen(screen: pygame.Surface, clock: pygame.time.Clock):
@@ -28,7 +29,11 @@ def Wohnwagen(screen: pygame.Surface, clock: pygame.time.Clock):
     orginal_raum = raum.images
     groesse_raum_1 = (gv.SCREEN_WIDTH, gv.SCREEN_HIGHT)
     raum.images = [pygame.transform.smoothscale(img, groesse_raum_1) for img in orginal_raum] # mit KI
-
+    Fahrrad = Object("../assats/Bilder/Fahrrad.png", 150, screen, 180, 600, pygame.Rect(0, 0, 1024, 1024), 1, 5, 1,gv.Fahrrad_geklaut, gv.Fahrrad_auszahlung)
+    Fahrrad.sprite.load_spritesheet()
+    orginal_Fahrrad = Fahrrad.sprite.images
+    groesse_Fahrrad = (190, 300)
+    Fahrrad.sprite.images = [pygame.transform.smoothscale(img, groesse_Fahrrad) for img in orginal_Fahrrad]
 
 
     while True:
@@ -42,12 +47,18 @@ def Wohnwagen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return GameScreens.PAUSED
                 if event.key == pygame.K_ESCAPE:
                     return GameScreens.PLAY
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if Fahrrad.rect.collidepoint(event.pos):
+                    Fahrrad.geklaut = True
+                    gv.Fahrrad_geklaut = True
+                    gv.Fahrrad_auszahlung = True
 
         screen.fill("black")
         raum.draw(screen, 0,0,frame_counter)
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
                                gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
 
+        Fahrrad.update_and_draw()
         uhr.uhr_update()
         coins.show_coins()
         pygame.display.flip()
