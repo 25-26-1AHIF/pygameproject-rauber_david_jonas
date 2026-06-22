@@ -72,7 +72,7 @@ def Gang_3(screen: pygame.Surface, clock: pygame.time.Clock):
         screen.fill("black")
         raum.draw(screen, 0, 0, frame_counter)
         player.update_and_draw(gv.SCREEN_WIDTH - 280, gv.SCREEN_WIDTH / 2 / 2,
-                               gv.SCREEN_HIGHT - 50, gv.SCREEN_HIGHT / 2)
+                               gv.SCREEN_HIGHT - 50, gv.SCREEN_HIGHT / 2 - 100)
 
 
 
