@@ -16,7 +16,7 @@ def Gang_3(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
-    player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
+    player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110 -60
     player = Player(
         screen=screen,
         player_x_pos=player_x_pos,
@@ -74,7 +74,7 @@ def Gang_3(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
 
-        player_rect = pygame.Rect(player.player_x_pos, player.player_y_pos, gv.player_size, gv.player_size)
+        player_rect = pygame.Rect(player.player_x_pos + 60, player.player_y_pos + 65, gv.player_size, gv.player_size)
 
 
         if player_rect.colliderect(door1_rect):
