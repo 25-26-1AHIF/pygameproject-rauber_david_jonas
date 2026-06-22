@@ -56,7 +56,7 @@ def room1_3(screen: pygame.Surface, clock: pygame.time.Clock):
         raum.draw(screen, 0,0,frame_counter)
         Fernseher.update_and_draw()
         player.update_and_draw(gv.SCREEN_WIDTH, 0,
-                               gv.SCREEN_HIGHT-110, gv.SCREEN_HIGHT/2 + 90)
+                               gv.SCREEN_HIGHT - 210, gv.SCREEN_HIGHT / 2)
 
         if player.player_x_pos > gv.SCREEN_WIDTH - 60:
             return GameScreens.GANG3

@@ -61,7 +61,8 @@ def room3_2(screen: pygame.Surface, clock: pygame.time.Clock):
 
         screen.fill("black")
         raum.draw(screen, 0, 0, frame_counter)
-        player.update_and_draw(gv.SCREEN_WIDTH, 0, gv.SCREEN_HIGHT - 110, gv.SCREEN_HIGHT / 2 + 90)
+        player.update_and_draw(gv.SCREEN_WIDTH, 0,
+                               gv.SCREEN_HIGHT - 210, gv.SCREEN_HIGHT / 2)
 
 
         Pc.update_and_draw()
