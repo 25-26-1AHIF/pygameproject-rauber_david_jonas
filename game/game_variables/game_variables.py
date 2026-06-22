@@ -8,6 +8,10 @@ class GameVariables:
     player_v = 5
 
     wohnwagen: bool = False
+    haus_2: bool = False
+    haus_3: bool = False
+    haus_4: bool = False
+
 
     blue_skin_gekauft = False
     red_skin_gekauft = False

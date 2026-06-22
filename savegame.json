@@ -10,5 +10,10 @@
         "skin_standing": "basic",
         "skin_moving": "basic"
     },
-    "scores": []
+    "scores": [
+        {
+            "zeit": 38,
+            "coins": 300
+        }
+    ]
 }
