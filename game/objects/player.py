@@ -86,7 +86,7 @@ class Player:
         if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
             self.moving = True
             self.player_x_pos -= gv.player_v
-            if self.player_x_pos < min_x_pos-100:
+            if self.player_x_pos < min_x_pos:
                 self.player_x_pos = min_x_pos
 
         if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
