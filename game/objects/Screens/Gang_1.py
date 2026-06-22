@@ -14,6 +14,9 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.display.set_caption("Room_1 Screen")
     frame_counter = 0
 
+    coins = Coins(screen)
+    uhr = Uhr(screen)
+
     # Spieler initialisieren
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
     player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110 -60
@@ -93,6 +96,9 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         #pygame.draw.rect(screen, "white", player_rect, 2)
         #pygame.draw.rect(screen, "red", exit_rect)
 
+
+        coins.show_coins()
+        uhr.uhr_update()
 
         pygame.display.flip()
         clock.tick(gv.FPS)

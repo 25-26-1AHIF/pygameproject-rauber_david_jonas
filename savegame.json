@@ -2,18 +2,26 @@
     "spielstand": {
         "coins": 0,
         "player_x": 400.0,
-        "player_y": 500,
+        "player_y": 420,
         "screen": "play",
         "background_x": 1,
         "stunden": 0,
-        "sekunden": 0,
-        "skin_standing": "basic",
-        "skin_moving": "basic"
+        "sekunden": 1,
+        "skin_standing": "red",
+        "skin_moving": "red"
     },
     "scores": [
         {
             "zeit": 11,
             "coins": 0
+        },
+        {
+            "zeit": 3,
+            "coins": 0
+        },
+        {
+            "zeit": 24,
+            "coins": 250
         },
         {
             "zeit": 38,
