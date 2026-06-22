@@ -43,7 +43,17 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     tuer_3_rect = pygame.Rect(3490 * x_scale, 560 * y_scale, 95 * x_scale, 150 * y_scale)
     tuer_5_rect = pygame.Rect(6635 * x_scale, 555 * y_scale, 85 * x_scale, 160 * y_scale)
 
+    van = Bilder("../assats/Bilder/Van.png", 1, pygame.Rect(0, 0, 1024, 1024), 80)
+    van.load_spritesheet()
+    groesse_Van = (500, 500)
+    orginal_Van = van.images
+    van.images = [pygame.transform.smoothscale(img, groesse_Van) for img in orginal_Van]
+    van_rect = pygame.Rect(5700, 100, 500, 500)
+
+
+
     while True:
+        frame_counter += 1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return GameScreens.EXIT
@@ -85,9 +95,13 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                                          GameScreens.RIDDLE5])
 
                 elif tuer_5_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    gv.haus_4 = True
                     return random.choice([GameScreens.RIDDLE1, GameScreens.RIDDLE2,
                                          GameScreens.RIDDLE3, GameScreens.RIDDLE4,
                                          GameScreens.RIDDLE5])
+
+                elif van_rect.collidepoint(x_Hintergrund, y_Hintergrund):
+                    return GameScreens.FINISH
 
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
@@ -95,12 +109,14 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 x_pos_hintergrund += 10
 
         if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
-            if x_pos_hintergrund > -5000:
+            if x_pos_hintergrund > -5500:
                 x_pos_hintergrund -= 10
         gv.background_x = x_pos_hintergrund
 
         screen.fill("black")
+
         straße.draw(screen, x_pos_hintergrund, 0, frame_counter)
+        van.draw(screen, x_pos_hintergrund + 5700, 100, frame_counter)
         player.update_and_draw(
             max_x_pos=gv.SCREEN_WIDTH - 200,
             min_x_pos=200,

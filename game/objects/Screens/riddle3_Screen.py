@@ -36,6 +36,9 @@ def riddle3_screen(screen, clock):
                         elif gv.haus_3 == True:
                             gv.haus_3 = False
                             return GameScreens.GANG3
+                        elif gv.haus_4 == True:
+                            gv.haus_4 = False
+                            return GameScreens.GANG4
                         else:
                             return GameScreens.GANG1
                     else:

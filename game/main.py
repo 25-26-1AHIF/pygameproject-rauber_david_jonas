@@ -20,6 +20,7 @@ from objects.Screens.Mode_Screen import mode_screen
 from objects.Screens.Gang_1 import Gang_1
 from objects.Screens.Gang_2 import Gang_2
 from objects.Screens.Gang_3 import Gang_3
+from objects.Screens.Gang_4 import Gang_4
 from objects.save_game import load_game, reset_game
 from objects.Screens.Wohnwagen import Wohnwagen
 from objects.Screens.shop_Screen import shop_screen
@@ -31,6 +32,10 @@ from objects.Screens.room_1_3 import room1_3
 from objects.Screens.room_2_3 import room2_3
 from objects.Screens.room_3_3 import room3_3
 from objects.Screens.room_4_3 import room4_3
+from objects.Screens.room_1_4 import room1_4
+from objects.Screens.room_2_4 import room2_4
+from objects.Screens.room_3_4 import room3_4
+from objects.Screens.room_4_4 import room4_4
 from objects.Screens.scores_Screen import scores_screen
 
 
@@ -77,6 +82,14 @@ def main():
             GameScreens.actual = room3_3(screen, clock)
         elif GameScreens.actual == GameScreens.ROOM_4_3:
             GameScreens.actual = room4_3(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_1_4:
+            GameScreens.actual = room1_4(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_2_4:
+            GameScreens.actual = room2_4(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_3_4:
+            GameScreens.actual = room3_4(screen, clock)
+        elif GameScreens.actual == GameScreens.ROOM_4_4:
+            GameScreens.actual = room4_4(screen, clock)
         elif GameScreens.actual == GameScreens.MODE:
             GameScreens.actual = mode_screen(screen, clock)
         elif GameScreens.actual == GameScreens.RIDDLE1:
@@ -95,6 +108,8 @@ def main():
             GameScreens.actual = Gang_2(screen, clock)
         elif GameScreens.actual == GameScreens.GANG3:
             GameScreens.actual = Gang_3(screen, clock)
+        elif GameScreens.actual == GameScreens.GANG4:
+            GameScreens.actual = Gang_4(screen, clock)
         elif GameScreens.actual == GameScreens.WAGEN:
             GameScreens.actual = Wohnwagen(screen, clock)
         elif GameScreens.actual == GameScreens.SHOP:
