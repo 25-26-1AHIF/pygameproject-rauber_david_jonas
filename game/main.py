@@ -6,6 +6,7 @@ from objects.Screens.Play_Screen import play_screen
 from objects.Screens.Paused_Screen import paused_screen
 from objects.Screens.Steuerung_Screen import steuerung_screen
 from objects.Screens.Animation_Screen import animation_screen
+from objects.Screens.Finish_Screen import finish_screen
 from objects.Screens.Room1_Screen import room1_screen
 from objects.Screens.Room2_Screen import room2_screen
 from objects.Screens.Room3_Screen import room3_screen
@@ -31,7 +32,6 @@ from objects.Screens.room_2_3 import room2_3
 from objects.Screens.room_3_3 import room3_3
 from objects.Screens.room_4_3 import room4_3
 from objects.Screens.scores_Screen import scores_screen
-
 
 
 def main():
@@ -101,6 +101,8 @@ def main():
             GameScreens.actual = shop_screen(screen, clock)
         elif GameScreens.actual == GameScreens.SCORES:
             GameScreens.actual = scores_screen(screen, clock)
+        elif GameScreens.actual == GameScreens.FINISH:
+            GameScreens.actual = finish_screen(screen, clock)
         elif GameScreens.actual == GameScreens.EXIT:
             break
     pygame.quit()

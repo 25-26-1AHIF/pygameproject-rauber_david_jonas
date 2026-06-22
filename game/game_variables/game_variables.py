@@ -91,4 +91,5 @@ class GameScreens:
     ROOM_3_3 = ("room3_3")
     ROOM_4_3 = ("room4_3")
     SCORES = ("scores")
+    FINISH = ("finish")
     actual = MAIN
