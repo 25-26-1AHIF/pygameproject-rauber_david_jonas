@@ -18,10 +18,10 @@ def scores_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     platz3_str = "3. Platz: -  (0 Coins)"
 
     if len(scores_liste) >= 1:
-        ges_sek = scores_liste[0]["zeit"]  # Holt die Zeit aus dem Dictionary
-        m_coins = scores_liste[0]["coins"]  # Holt die Coins aus dem Dictionary
-        minuten = ges_sek // 60
-        sekunden = ges_sek % 60
+        ges_sek = scores_liste[0]["zeit"]
+        m_coins = scores_liste[0]["coins"]
+        minuten = ges_sek // 60 # Berechnung mit KI ChatGPT Prompt: Berechne die Zeit korrekt
+        sekunden = ges_sek % 60 # Berechnung mit KI ChatGPT
         platz1_str = f"1. Platz: {minuten:02d}:{sekunden:02d}  ({m_coins} Coins)"
     if len(scores_liste) >= 2:
         ges_sek = scores_liste[1]["zeit"]

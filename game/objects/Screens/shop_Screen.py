@@ -58,7 +58,7 @@ def shop_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     rainbow_skin.load_spritesheet()
     basic_skin.load_spritesheet()
 
-    # Start KI
+    # Start KI Gemini  Prompt: Wie verändere ich die größer dieser Spritesheets
     blue_skin.images[0] = pygame.transform.scale(
         blue_skin.images[0], (200, 200)
     )
@@ -78,7 +78,7 @@ def shop_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     basic_skin.images[0] = pygame.transform.scale(
         basic_skin.images[0], (200, 200)
     )
-    # Ende KI
+    # Ende KI Gemini
 
     while True:
         for event in pygame.event.get():
@@ -132,13 +132,13 @@ def shop_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         screen.fill("blue")
 
-        # Start von KI
+        # Start von KI Gemini  Prompt: Wie verkleinere ich die Bilder ohne sie auszuschneiden
         screen.blit(blue_skin.images[0], (500, 50))
         screen.blit(red_skin.images[0], (50, 350))
         screen.blit(green_skin.images[0], (300, 350))
         screen.blit(rainbow_skin.images[0], (550, 350))
         screen.blit(basic_skin.images[0], (250, 50))
-        # Ende KI
+        # Ende KI Gemini
 
         if gv.aktueller_skin_standing == "basic":
             basic_text = gv.FONT_MIDDLE.render("Ausgerüstet", True, "green")

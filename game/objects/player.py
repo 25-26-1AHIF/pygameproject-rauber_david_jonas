@@ -110,6 +110,7 @@ class Player:
         gv.player_x = self.player_x_pos
         gv.player_y = self.player_y_pos
 
+    # KI Gemini Start  Prompt: Kannst du die Hitbox des players verkleinern und anzeigen lassen
     def update_and_draw(self, max_x_pos: int, min_x_pos: int,
                         max_y_pos: int, min_y_pos: int):
         self.move(max_x_pos, min_x_pos, max_y_pos, min_y_pos)
@@ -154,3 +155,4 @@ class Player:
 
         # optional zum Testen: Zeichnet die Hitbox als rotes Rechteck
         # pygame.draw.rect(self.screen, (255, 0, 0), self.hitbox, 2)
+        # KI Gemini Ende

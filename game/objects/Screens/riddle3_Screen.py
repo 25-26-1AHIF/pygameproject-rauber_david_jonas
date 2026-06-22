@@ -16,7 +16,7 @@ def riddle3_screen(screen, clock):
     pygame.display.flip()
     pygame.time.delay(3000)
 
-    eingabe = "" # Mit Hilfe von KI
+    eingabe = "" # Mit Hilfe von KI ChatGPT Prompt: Wie macht man eine Benutzer-Eingabe in pygame
 
     while True:
         for event in pygame.event.get():

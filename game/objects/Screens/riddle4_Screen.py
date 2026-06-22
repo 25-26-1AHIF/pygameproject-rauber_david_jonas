@@ -16,7 +16,7 @@ def riddle4_screen(screen, clock):
         pygame.Rect(300, 200, 20, 400),
         pygame.Rect(450, 0, 20, 400),
         pygame.Rect(600, 200, 20, 400)
-    ] # Mit Hilfe von KI berechnet
+    ] # Mit Hilfe von KI Gemini berechnet Prompt: Berechne mir 4 Rects in einem Labyrinth
 
     while True:
         for event in pygame.event.get():

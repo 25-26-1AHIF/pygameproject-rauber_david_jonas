@@ -60,7 +60,7 @@ def riddle1_screen(screen, clock):
                 pygame.draw.rect(screen, YELLOW, yellow_rect)
 
             pygame.display.flip()
-            pygame.time.delay(700)
+            pygame.time.delay(700) # Hilfe KI Gemini Prompt: Wie kann ich eine Pause in Pygame machen
 
             pygame.draw.rect(screen, DARK_RED, red_rect)
             pygame.draw.rect(screen, DARK_BLUE, blue_rect)

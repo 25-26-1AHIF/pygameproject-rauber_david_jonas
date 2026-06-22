@@ -33,8 +33,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     coins = Coins(screen)
     uhr = Uhr(screen)
 
-    # ### TÜREN ALS EINZELNE VARIABLEN BERECHNEN ###
-    # Berechnung basiert auf den exakten Pixel-Koordinaten des Originalbildes (8192 x 1024)
+    # Berechnungen mit Hilfe von KI Gemini Prompt: Berechne die genauen Hitboxen der Türen
     x_scale = bg_width / 8192.0
     y_scale = bg_height / 1024.0
     tuer_1_rect = pygame.Rect(1535 * x_scale, 555 * y_scale, 85 * x_scale, 160 * y_scale)
@@ -42,6 +41,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     tuer_4_rect = pygame.Rect(5580 * x_scale, 565 * y_scale, 105 * x_scale, 185 * y_scale)
     tuer_3_rect = pygame.Rect(3490 * x_scale, 560 * y_scale, 95 * x_scale, 150 * y_scale)
     tuer_5_rect = pygame.Rect(6635 * x_scale, 555 * y_scale, 85 * x_scale, 160 * y_scale)
+    # Ende KI Gemini
 
     van = Bilder("../assats/Bilder/Van.png", 1, pygame.Rect(0, 0, 1024, 1024), 80)
     van.load_spritesheet()

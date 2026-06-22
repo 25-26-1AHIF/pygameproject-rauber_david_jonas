@@ -9,6 +9,10 @@ def riddle5_screen(screen, clock):
     ziel = pygame.Rect(300, 300, 60, 60)
     letzter_wechsel = pygame.time.get_ticks()
 
+    text = gv.FONT_MIDDLE.render("Klicke den grünen Block", True,
+                                 "white")
+    text_rect = text.get_rect(center=(220, 50))
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -41,9 +45,6 @@ def riddle5_screen(screen, clock):
             letzter_wechsel = aktuelle_zeit
 
         screen.fill("black")
-        text = gv.FONT_MIDDLE.render("Klicke den grünen Block",True,
-                                     "white")
-        text_rect = text.get_rect(center=(220, 50))
         screen.blit(text, text_rect)
         pygame.draw.rect(screen, "green", ziel, width=0)
         pygame.display.flip()
