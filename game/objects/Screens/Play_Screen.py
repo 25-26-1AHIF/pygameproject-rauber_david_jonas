@@ -104,9 +104,8 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         player.update_and_draw(
             max_x_pos=gv.SCREEN_WIDTH - 200,
             min_x_pos=200,
-            max_y_pos=gv.SCREEN_HIGHT,
-            min_y_pos=gv.SCREEN_HIGHT / 2 + 100
-        )
+            max_y_pos=gv.SCREEN_HIGHT - gv.player_size - 100,
+            min_y_pos=gv.SCREEN_HIGHT / 2 + 100)
         coins.show_coins()
         uhr.uhr_update()
 
