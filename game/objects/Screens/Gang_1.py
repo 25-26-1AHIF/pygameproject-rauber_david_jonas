@@ -16,7 +16,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
 
     # Spieler initialisieren
     player_x_pos = gv.SCREEN_WIDTH / 2 - gv.player_size / 2
-    player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110
+    player_y_pos = gv.SCREEN_HIGHT - gv.player_size - 110 -60
     player = Player(
         screen=screen,
         player_x_pos=player_x_pos,
@@ -39,7 +39,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
                              gv.SCREEN_HIGHT * 0.20)  # Tür Hinten rechts
     door4_rect = pygame.Rect(gv.SCREEN_WIDTH * 0.64, gv.SCREEN_HIGHT * 0.40, gv.SCREEN_WIDTH * 0.07,
                              gv.SCREEN_HIGHT * 0.35)  # Tür Rechts
-    exit_rect = pygame.Rect(0, gv.SCREEN_HIGHT-100, gv.SCREEN_WIDTH, 10)
+    exit_rect = pygame.Rect(0, gv.SCREEN_HIGHT-70, gv.SCREEN_WIDTH, 10)
 
 
 
@@ -69,7 +69,7 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
 
-        player_rect = pygame.Rect(player.player_x_pos, player.player_y_pos, gv.player_size, gv.player_size)
+        player_rect = pygame.Rect(player.player_x_pos + 60, player.player_y_pos + 65, gv.player_size, gv.player_size)
 
 
         if player_rect.colliderect(door1_rect):
@@ -86,13 +86,14 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         #Test_object.update_and_draw()
 
         #hittboxen für türen zeichnen
-        # pygame.draw.rect(screen, "red", door1_rect, 2)
-        # pygame.draw.rect(screen, "blue", door2_rect, 2)
-        # pygame.draw.rect(screen, "green", door3_rect, 2)
-        # pygame.draw.rect(screen, "yellow", door4_rect, 2)
-        # pygame.draw.rect(screen, "white", player_rect, 2)
-        # pygame.draw.rect(screen, "red", exit_rect)
+        pygame.draw.rect(screen, "red", door1_rect, 2)
+        pygame.draw.rect(screen, "blue", door2_rect, 2)
+        pygame.draw.rect(screen, "green", door3_rect, 2)
+        pygame.draw.rect(screen, "yellow", door4_rect, 2)
+        pygame.draw.rect(screen, "white", player_rect, 2)
+        pygame.draw.rect(screen, "red", exit_rect)
 
 
         pygame.display.flip()
         clock.tick(gv.FPS)
+

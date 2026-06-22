@@ -127,9 +127,30 @@ class Player:
                 xpos=self.player_x_pos + offset_x,
                 ypos=self.player_y_pos + offset_y,
                 frame_counter=self.frame_counter)
+
+            # Holt das aktuelle Bild der Lauf-Animation
+            aktuelle_anzahl_frames = len(self.aktueller_moving_skin.images)
+            aktuelles_bild = self.aktueller_moving_skin.images[self.frame_counter % aktuelle_anzahl_frames]
+
+            # Berechnet die engste Hitbox und verschiebt sie an die Spielerposition
+            self.hitbox = aktuelles_bild.get_bounding_rect()
+            self.hitbox.x += self.player_x_pos + offset_x
+            self.hitbox.y += self.player_y_pos + offset_y
+
         else:
             self.aktueller_standing_skin.draw(
                 screen=self.screen,
                 xpos=self.player_x_pos,
                 ypos=self.player_y_pos,
                 frame_counter=0)
+
+            # Holt das Bild der Steh-Animation
+            aktuelles_bild = self.aktueller_standing_skin.images[0]
+
+            # Berechnet die engste Hitbox für das Stehen
+            self.hitbox = aktuelles_bild.get_bounding_rect()
+            self.hitbox.x += self.player_x_pos
+            self.hitbox.y += self.player_y_pos
+
+        # optional zum Testen: Zeichnet die Hitbox als rotes Rechteck
+        pygame.draw.rect(self.screen, (255, 0, 0), self.hitbox, 2)
