@@ -86,12 +86,12 @@ def Gang_1(screen: pygame.Surface, clock: pygame.time.Clock):
         #Test_object.update_and_draw()
 
         #hittboxen für türen zeichnen
-        pygame.draw.rect(screen, "red", door1_rect, 2)
-        pygame.draw.rect(screen, "blue", door2_rect, 2)
-        pygame.draw.rect(screen, "green", door3_rect, 2)
-        pygame.draw.rect(screen, "yellow", door4_rect, 2)
-        pygame.draw.rect(screen, "white", player_rect, 2)
-        pygame.draw.rect(screen, "red", exit_rect)
+        #pygame.draw.rect(screen, "red", door1_rect, 2)
+        #pygame.draw.rect(screen, "blue", door2_rect, 2)
+        #pygame.draw.rect(screen, "green", door3_rect, 2)
+        #pygame.draw.rect(screen, "yellow", door4_rect, 2)
+        #pygame.draw.rect(screen, "white", player_rect, 2)
+        #pygame.draw.rect(screen, "red", exit_rect)
 
 
         pygame.display.flip()

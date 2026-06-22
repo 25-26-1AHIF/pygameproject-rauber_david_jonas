@@ -153,4 +153,4 @@ class Player:
             self.hitbox.y += self.player_y_pos
 
         # optional zum Testen: Zeichnet die Hitbox als rotes Rechteck
-        pygame.draw.rect(self.screen, (255, 0, 0), self.hitbox, 2)
+        # pygame.draw.rect(self.screen, (255, 0, 0), self.hitbox, 2)
