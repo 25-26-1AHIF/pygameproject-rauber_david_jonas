@@ -8,7 +8,6 @@ class GameVariables:
     player_v = 5
 
     wohnwagen: bool = False
-    #spiel_laden: bool = False
 
     blue_skin_gekauft = False
     red_skin_gekauft = False

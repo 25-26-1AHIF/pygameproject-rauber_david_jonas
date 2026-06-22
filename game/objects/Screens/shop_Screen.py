@@ -130,7 +130,7 @@ def shop_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                         gv.aktueller_skin_standing = "rainbow"
                         gv.aktueller_skin_moving = "rainbow"
 
-        screen.fill("black")
+        screen.fill("blue")
 
         # Start von KI
         screen.blit(blue_skin.images[0], (500, 50))
