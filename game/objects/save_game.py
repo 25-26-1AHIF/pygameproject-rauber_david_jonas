@@ -22,9 +22,8 @@ def save_game():
         "scores": aktuelle_scores
     }
 
-    datei = open("../savegame.json", "w")
-    json.dump(haupt_daten, datei, indent=4)
-    datei.close()
+    with open("../savegame.json", "w") as datei:
+        json.dump(haupt_daten, datei, indent=4)
 
 def load_game():
     try:
@@ -71,9 +70,8 @@ def check_and_save_score():
         scores = scores[0:3]
 
     haupt_daten["scores"] = scores
-    datei = open("../savegame.json", "w")
-    json.dump(haupt_daten, datei, indent=4)
-    datei.close()
+    with open("../savegame.json", "w") as datei:
+        json.dump(haupt_daten, datei, indent=4)
 
 def reset_game():
     check_and_save_score()
@@ -88,10 +86,8 @@ def reset_game():
     save_game()
 
 def load_entire_file():
-    try:
-        datei = open("../savegame.json", "r")
-        daten = json.load(datei)
-        datei.close()
-        return daten
-    except:
-        return {"spielstand": {}, "scores": []}
+        try:
+            with open("../savegame.json", "r") as datei:
+                return json.load(datei)
+        except:
+            return {"spielstand": {}, "scores": []}
